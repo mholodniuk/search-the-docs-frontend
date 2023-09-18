@@ -1,0 +1,30 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-list style="width: 20vw">
+      <div mat-subheader>Rooms</div>
+      <mat-list-item *ngFor="let folder of folders">
+        <mat-icon matListItemIcon>folder</mat-icon>
+        <div matListItemTitle>{{folder.name}}</div>
+        <div matListItemLine>{{folder.updated | date}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-drawer>
+
+  <mat-toolbar class="flexSpaceBetween">
+    <button mat-icon-button aria-label="Menu" (click)="drawer.toggle()">
+      <mat-icon aria-hidden="false" fontIcon="menu"></mat-icon>
+    </button>
+    <span class="flex-expand"></span>
+    <button mat-icon-button aria-label="User">
+      <mat-icon aria-hidden="false" fontIcon="account_circle"></mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="main">
+    <mat-card [class.mat-elevation-z4]="true" class="background-card">
+      <router-outlet></router-outlet>
+    </mat-card>
+  </div>
+
+</mat-drawer-container>
