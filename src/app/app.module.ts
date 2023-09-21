@@ -18,7 +18,7 @@ import { RootModule } from "./root/root.module";
     HttpClientModule,
     SharedModule,
     AuthModule,
-    RootModule
+    RootModule,
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,10 @@ import { JwtTokenInterceptor } from "./token-interceptor/jwt-token-interceptor";
 import { AuthService } from "./service/auth-service";
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "../shared/shared.module";
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "./store/auth.effects";
+import { AuthReducer } from "./store/auth.reducer";
 
 
 @NgModule({
@@ -13,7 +17,9 @@ import { SharedModule } from "../shared/shared.module";
   ],
   imports: [
     RouterModule.forChild([{path: '', component: AuthComponent}]),
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature('auth', AuthReducer),
+    EffectsModule.forFeature([AuthEffects]),
   ],
   providers: [
     AuthService, {

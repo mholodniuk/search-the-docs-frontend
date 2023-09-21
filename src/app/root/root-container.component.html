@@ -2,21 +2,25 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <mat-list style="width: 20vw">
       <div mat-subheader>Rooms</div>
-      <mat-list-item *ngFor="let folder of folders">
+      <mat-list-item *ngFor="let room of (rooms$ | async)?.rooms">
         <mat-icon matListItemIcon>folder</mat-icon>
-        <div matListItemTitle>{{folder.name}}</div>
-        <div matListItemLine>{{folder.updated | date}}</div>
+        <div matListItemTitle>
+          {{room.name}}
+        </div>
+        <div matListItemLine>
+          {{room.createdAt | date}}, {{room.documentCount}} {{room.documentCount > 1 ? "documents" : "document"}}
+        </div>
       </mat-list-item>
       <mat-divider></mat-divider>
     </mat-list>
   </mat-drawer>
 
-  <mat-toolbar class="flexSpaceBetween">
+  <mat-toolbar class="flex-space-between">
     <button mat-icon-button aria-label="Menu" (click)="drawer.toggle()">
       <mat-icon aria-hidden="false" fontIcon="menu"></mat-icon>
     </button>
     <span class="flex-expand"></span>
-    <button mat-icon-button aria-label="User">
+    <button mat-icon-button aria-label="User" (click)="authenticate()">
       <mat-icon aria-hidden="false" fontIcon="account_circle"></mat-icon>
     </button>
   </mat-toolbar>
