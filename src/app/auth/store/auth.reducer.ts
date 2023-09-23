@@ -3,7 +3,6 @@ import { createReducer, on } from "@ngrx/store";
 import * as AuthActions from './auth.actions';
 
 const initialState: AuthState = {
-  user: undefined,
   loading: false,
   error: undefined,
   token: undefined

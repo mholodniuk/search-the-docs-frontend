@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from "rxjs";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { AuthRequest, AuthResponse } from "../model/auth.model";
 import { environment } from "../../../environments/environment";
 
@@ -16,7 +16,12 @@ export class AuthService {
     return of(localStorage.getItem(this.TOKEN_KEY));
   }
 
+  setAuthToken(token: string) {
+    localStorage.setItem(this.TOKEN_KEY, token);
+  }
+
   authenticate(request: AuthRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/authenticate`, request);
+    const params = new HttpParams().append("include", "id");
+    return this.http.post<AuthResponse>(`${this.apiUrl}/authenticate`, request, {params: params});
   }
 }

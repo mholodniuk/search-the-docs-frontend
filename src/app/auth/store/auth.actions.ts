@@ -1,16 +1,14 @@
 import { createAction, props } from '@ngrx/store';
+import { AuthRequest } from "../model/auth.model";
 
-export const getToken = createAction('[Login] Get Token');
+export const getToken = createAction(
+  '[Auth] Get Token',
+  props<AuthRequest>()
+);
 
 export const getTokenSuccess = createAction(
-  '[Login] Get Token Success',
+  '[Auth] Get Token Success',
   props<{ token: string }>()
 );
 
-export const getTokenFailure = createAction('[Login] Get Token Failure');
-
-export const getLogout = createAction('[Login] Get Logout');
-
-export const getLogoutSuccess = createAction('[Login] Get Logout Success');
-
-export const getLogoutFailure = createAction('[Login] Get Logout Failure');
+export const getTokenFailure = createAction('[Auth] Get Token Failure');

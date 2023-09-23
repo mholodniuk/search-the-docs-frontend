@@ -7,8 +7,5 @@ export const tokenSelector = createSelector(selectAuthState, (state) => {
   return state.token;
 });
 
-export const isLoadingSelector = createSelector(selectAuthState, (state) => state.loading);
-
-export const loggedInSelector = createSelector(selectAuthState, (state) => state.user !== undefined);
-
-export const userSelector = createSelector(selectAuthState, (state) => state.user);
+export const loadingSelector = createSelector(selectAuthState, (state) => state.loading);
+export const errorSelector = createSelector(selectAuthState, (state) => state.error);

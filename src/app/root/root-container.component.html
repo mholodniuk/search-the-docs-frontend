@@ -20,6 +20,7 @@
       <mat-icon aria-hidden="false" fontIcon="menu"></mat-icon>
     </button>
     <span class="flex-expand"></span>
+    <span>{{(user$ | async)?.displayName}}</span>
     <button mat-icon-button aria-label="User" (click)="authenticate()">
       <mat-icon aria-hidden="false" fontIcon="account_circle"></mat-icon>
     </button>
