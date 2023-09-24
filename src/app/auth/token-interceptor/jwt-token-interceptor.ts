@@ -19,7 +19,7 @@ export class JwtTokenInterceptor implements HttpInterceptor {
         if (token) {
           request = request.clone({
             setHeaders: {
-              Authorization: 'Bearer ' + token
+              Authorization: 'Bearer ' + token.token
             }
           });
         }
@@ -28,7 +28,7 @@ export class JwtTokenInterceptor implements HttpInterceptor {
           catchError((error) => {
             if (error instanceof HttpErrorResponse) {
               switch (error.status) {
-                case 401: void this.router.navigate(['/login']); break;
+                case 401: void this.router.navigate(['/home']); break;
                 case 403: void this.router.navigate(['/not-authorized']); break;
                 default:  void this.router.navigate(['/error']); break;
               }

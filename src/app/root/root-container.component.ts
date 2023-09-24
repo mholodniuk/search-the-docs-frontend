@@ -5,6 +5,8 @@ import { AppState } from "../store/app.state";
 import { User } from "../user/user.model";
 import { userSelector } from "../user/store/user.selector";
 import { RoomsDto } from "../room.service";
+import { Router } from "@angular/router";
+import * as AuthActions from '../auth/store/auth.actions';
 
 @Component({
   selector: 'root-container',
@@ -13,13 +15,27 @@ import { RoomsDto } from "../room.service";
 })
 export class RootContainerComponent implements OnInit {
   user$: Observable<User | undefined>;
-
   mock: RoomsDto = {count: 0, rooms: []};
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private router: Router) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.store.dispatch(AuthActions.tryAutoAuthenticate());
     this.user$ = this.store.pipe(select(userSelector));
+  }
+
+  login() {
+    void this.router.navigate(['/auth']);
+  }
+
+  home() {
+    void this.router.navigate(['/home']);
+  }
+
+  logout() {
+    this.store.dispatch(AuthActions.logOut());
   }
 }

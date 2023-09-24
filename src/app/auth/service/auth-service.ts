@@ -6,18 +6,26 @@ import { environment } from "../../../environments/environment";
 
 @Injectable()
 export class AuthService {
-  private readonly TOKEN_KEY = "search.the.docs.token";
+  private readonly TOKEN_KEY = "search.the.docs";
   private readonly apiUrl = `${environment.api}/users`;
 
   constructor(private http: HttpClient) {
   }
 
-  getAuthToken(): Observable<string | null> {
-    return of(localStorage.getItem(this.TOKEN_KEY));
+  getAuthToken(): Observable<AuthResponse | null> {
+    const auth = localStorage.getItem(this.TOKEN_KEY);
+    if (auth) {
+      return of(JSON.parse(auth));
+    }
+    return of(null);
   }
 
-  setAuthToken(token: string) {
-    localStorage.setItem(this.TOKEN_KEY, token);
+  setAuthToken(token: AuthResponse) {
+    localStorage.setItem(this.TOKEN_KEY, JSON.stringify(token));
+  }
+
+  deleteAuthToken() {
+    localStorage.removeItem(this.TOKEN_KEY);
   }
 
   authenticate(request: AuthRequest): Observable<AuthResponse> {

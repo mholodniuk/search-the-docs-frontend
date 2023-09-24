@@ -19,11 +19,24 @@
     <button mat-icon-button aria-label="Menu" (click)="drawer.toggle()">
       <mat-icon aria-hidden="false" fontIcon="menu"></mat-icon>
     </button>
+    <button mat-icon-button aria-label="Home" (click)="home()">
+      <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
+    </button>
     <span class="flex-expand"></span>
     <span>{{(user$ | async)?.displayName}}</span>
-    <button mat-icon-button aria-label="User">
+    <button mat-icon-button aria-label="User" [matMenuTriggerFor]="menu">
       <mat-icon aria-hidden="false" fontIcon="account_circle"></mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <ng-container *ngIf="(user$ | async) === undefined; else userMenu">
+        <button mat-menu-item (click)="login()">Log in</button>
+        <button mat-menu-item>Register</button>
+      </ng-container>
+      <ng-template #userMenu>
+        <button mat-menu-item>Account</button>
+        <button mat-menu-item (click)="logout()">Log out</button>
+      </ng-template>
+    </mat-menu>
   </mat-toolbar>
 
   <div class="main">

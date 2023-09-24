@@ -34,4 +34,13 @@ export const AuthReducer = createReducer(
       error: "Failed to log in"
     }
   }),
+
+  on(AuthActions.logOut, (state) => {
+    return {
+      ...state,
+      token: undefined,
+      loading: false,
+      error: undefined
+    }
+  })
 )

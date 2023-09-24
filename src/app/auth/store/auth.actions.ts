@@ -6,9 +6,17 @@ export const retrieveAuthToken = createAction(
   props<AuthRequest>()
 );
 
+export const tryAutoAuthenticate = createAction(
+  '[Auth] Try Auto Auth'
+);
+
 export const updateAuthToken = createAction(
   '[Auth] Update Auth Token',
   props<AuthResponse>()
 );
 
 export const retrieveAuthTokenFailure = createAction('[Auth] Retrieve Auth Token Failure');
+
+export const logOut = createAction(
+  '[Auth] Log out'
+)

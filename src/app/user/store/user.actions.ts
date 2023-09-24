@@ -8,7 +8,7 @@ export const retrieveUserData = createAction(
 
 export const updateUserData = createAction(
   '[User] Update User Data',
-  props<{ user: User }>()
+  props<{ user?: User }>()
 );
 
 export const retrieveDataFailure = createAction(

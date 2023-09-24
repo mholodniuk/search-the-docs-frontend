@@ -24,6 +24,13 @@ export class UserEffects {
     )
   );
 
+  clearUserData$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.logOut),
+      map((_) => UserActions.updateUserData({user: undefined}))
+    )
+  );
+
   constructor(
     private userService: UserService,
     private actions$: Actions) {

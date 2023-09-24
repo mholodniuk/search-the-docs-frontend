@@ -14,6 +14,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../../environments/environment";
 import { SharedModule } from "../shared/shared.module";
+import { MatMenuModule } from "@angular/material/menu";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { SharedModule } from "../shared/shared.module";
     MatCardModule,
     MatButtonModule,
     MatBadgeModule,
+    MatMenuModule,
     SharedModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot(),
