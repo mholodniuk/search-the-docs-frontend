@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { LoginEvent } from "./login.types";
-import { Store } from "@ngrx/store";
+import { select, Store } from "@ngrx/store";
 import { AppState } from "../../../store/app.state";
 import * as AuthActions from '../../store/auth.actions';
+import { Observable } from "rxjs";
+import { errorSelector } from "../../store/auth.selector";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  error$: Observable<string | undefined>;
   form = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]]
@@ -21,9 +24,14 @@ export class LoginComponent {
     private store: Store<AppState>) {
   }
 
+  ngOnInit(): void {
+    this.error$ = this.store.pipe(select(errorSelector));
+  }
+
   submit() {
     if (this.form.valid) {
       this.store.dispatch(AuthActions.retrieveAuthToken(this.form.value as LoginEvent))
     }
   }
+
 }

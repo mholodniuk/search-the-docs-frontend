@@ -11,10 +11,10 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.retrieveAuthToken),
       switchMap((action) => {
-        return this.authService.authenticate(action).pipe(
+        return this.authService.authenticate({username: action.username, password: action.password}).pipe(
           tap((authResponse) => this.authService.setAuthToken(authResponse)),
           map((token) => AuthActions.updateAuthToken(token)),
-          catchError(() => of(AuthActions.retrieveAuthTokenFailure))
+          catchError(() => of(AuthActions.retrieveAuthTokenFailure()))
         )
       })
     )
@@ -27,11 +27,11 @@ export class AuthEffects {
         return this.authService.getAuthToken().pipe(
           map((token) => {
             if (token) {
-              return AuthActions.updateAuthToken(token)
+              return AuthActions.updateAuthToken(token);
             }
-            return AuthActions.retrieveAuthTokenFailure()
+            return AuthActions.autoAuthenticateFailure();
           }),
-          catchError(() => of(AuthActions.retrieveAuthTokenFailure))
+          catchError(() => of(AuthActions.autoAuthenticateFailure()))
         )
       })
     )
@@ -42,6 +42,15 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.updateAuthToken),
         tap(() => void this.router.navigate(['/']))
+      ),
+    {dispatch: false}
+  );
+
+  authenticationFailureCleanup$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.retrieveAuthTokenFailure),
+        tap(() => this.authService.deleteAuthToken())
       ),
     {dispatch: false}
   );

@@ -18,7 +18,7 @@ export class UserEffects {
       switchMap((action) =>
         this.userService.getUser(action.id).pipe(
           map((user) => UserActions.updateUserData({user: user})),
-          catchError(() => of(UserActions.retrieveDataFailure))
+          catchError(() => of(UserActions.retrieveDataFailure()))
         )
       )
     )

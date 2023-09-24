@@ -27,11 +27,7 @@ export class JwtTokenInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
           catchError((error) => {
             if (error instanceof HttpErrorResponse) {
-              switch (error.status) {
-                case 401: void this.router.navigate(['/home']); break;
-                case 403: void this.router.navigate(['/not-authorized']); break;
-                default:  void this.router.navigate(['/error']); break;
-              }
+              console.log(error.message);
             }
             return throwError(() => error);
           })

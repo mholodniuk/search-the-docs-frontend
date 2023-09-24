@@ -18,6 +18,10 @@
         <button [disabled]="!form.valid" type="submit" mat-button>Submit</button>
       </div>
 
+      <p *ngIf="error$ | async as error" style="color: red">
+        {{error}}
+      </p>
+
     </form>
   </mat-card-content>
 </mat-card>

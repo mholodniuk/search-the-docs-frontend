@@ -31,7 +31,16 @@ export const AuthReducer = createReducer(
       ...state,
       loading: false,
       token: undefined,
-      error: "Failed to log in"
+      error: "Invalid credentials"
+    }
+  }),
+
+  on(AuthActions.autoAuthenticateFailure, (state) => {
+    return {
+      ...state,
+      loading: false,
+      token: undefined,
+      error: undefined
     }
   }),
 
