@@ -1,27 +1,30 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { UserService } from "../service/user.service";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import * as UserActions from './user.actions';
-import { catchError, map, mergeMap, of } from "rxjs";
+import { catchError, map, of, switchMap } from "rxjs";
+import * as AuthActions from '../../auth/store/auth.actions';
+
 
 @Injectable()
 export class UserEffects {
 
   getUserData$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UserActions.getUserData),
-      mergeMap((action) =>
+      ofType(
+        UserActions.retrieveUserData,
+        AuthActions.updateAuthToken
+      ),
+      switchMap((action) =>
         this.userService.getUser(action.id).pipe(
-          map((user) => UserActions.getUserDataSuccess({user: user})),
-          catchError(() => of(UserActions.getUserDataFailure))
+          map((user) => UserActions.updateUserData({user: user})),
+          catchError(() => of(UserActions.retrieveDataFailure))
         )
       )
     )
   );
 
   constructor(
-    private http: HttpClient,
     private userService: UserService,
     private actions$: Actions) {
   }

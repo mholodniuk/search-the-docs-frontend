@@ -7,6 +7,7 @@ import { AuthModule } from "./auth/auth.module";
 import { SharedModule } from "./shared/shared.module";
 import { RootModule } from "./root/root.module";
 import { UserModule } from "./user/user.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { UserModule } from "./user/user.module";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     UserModule,
     SharedModule,

@@ -1,6 +1,6 @@
 export interface AuthResponse {
   token: string
-  id?: number
+  id: number
 }
 
 export interface AuthRequest {

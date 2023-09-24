@@ -1,14 +1,14 @@
 import { createAction, props } from '@ngrx/store';
-import { AuthRequest } from "../model/auth.model";
+import { AuthRequest, AuthResponse } from "../model/auth.model";
 
-export const getToken = createAction(
-  '[Auth] Get Token',
+export const retrieveAuthToken = createAction(
+  '[Auth] Retrieve Auth Token',
   props<AuthRequest>()
 );
 
-export const getTokenSuccess = createAction(
-  '[Auth] Get Token Success',
-  props<{ token: string }>()
+export const updateAuthToken = createAction(
+  '[Auth] Update Auth Token',
+  props<AuthResponse>()
 );
 
-export const getTokenFailure = createAction('[Auth] Get Token Failure');
+export const retrieveAuthTokenFailure = createAction('[Auth] Retrieve Auth Token Failure');

@@ -1,23 +1,23 @@
 import { UserState } from "./user.state";
 import { createReducer, on } from "@ngrx/store";
-import { getUserData, getUserDataFailure, getUserDataSuccess } from "./user.actions";
+import { retrieveUserData, retrieveDataFailure, updateUserData } from "./user.actions";
 
 
 const initialState: UserState = {
   loading: false
 }
 
-export const UserReducer = createReducer(
+export const UserReducer = createReducer<UserState>(
   initialState,
 
-  on(getUserData, (state) => {
+  on(retrieveUserData, (state) => {
     return {
       ...state,
       loading: true
     }
   }),
 
-  on(getUserDataSuccess, (state, action) => {
+  on(updateUserData, (state, action) => {
     return {
       ...state,
       user: action.user,
@@ -25,7 +25,7 @@ export const UserReducer = createReducer(
     }
   }),
 
-  on(getUserDataFailure, (state) => {
+  on(retrieveDataFailure, (state) => {
     return {
       ...state,
       loading: false

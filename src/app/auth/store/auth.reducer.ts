@@ -11,14 +11,14 @@ const initialState: AuthState = {
 export const AuthReducer = createReducer(
   initialState,
 
-  on(AuthActions.getToken, (state) => {
+  on(AuthActions.retrieveAuthToken, (state) => {
     return {
       ...state,
       loading: true,
     }
   }),
 
-  on(AuthActions.getTokenSuccess, (state, action) => {
+  on(AuthActions.updateAuthToken, (state, action) => {
     return {
       ...state,
       loading: false,
@@ -26,7 +26,7 @@ export const AuthReducer = createReducer(
     }
   }),
 
-  on(AuthActions.getTokenFailure, (state) => {
+  on(AuthActions.retrieveAuthTokenFailure, (state) => {
     return {
       ...state,
       loading: false,

@@ -1,16 +1,16 @@
 import { createAction, props } from '@ngrx/store';
 import { User } from "../user.model";
 
-export const getUserData = createAction(
-  '[User] Get User Data',
+export const retrieveUserData = createAction(
+  '[User] Retrieve User Data',
   props<{ id: number }>()
 );
 
-export const getUserDataSuccess = createAction(
-  '[User] Get User Data Success',
+export const updateUserData = createAction(
+  '[User] Update User Data',
   props<{ user: User }>()
 );
 
-export const getUserDataFailure = createAction(
-  '[User] Get User Data Failure'
+export const retrieveDataFailure = createAction(
+  '[User] Retrieve User Data Failure'
 );

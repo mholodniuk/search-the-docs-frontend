@@ -2,7 +2,7 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <mat-list style="width: 20vw">
       <div mat-subheader>Rooms</div>
-      <mat-list-item *ngFor="let room of (rooms$ | async)?.rooms">
+      <mat-list-item *ngFor="let room of mock.rooms">
         <mat-icon matListItemIcon>folder</mat-icon>
         <div matListItemTitle>
           {{room.name}}
@@ -21,7 +21,7 @@
     </button>
     <span class="flex-expand"></span>
     <span>{{(user$ | async)?.displayName}}</span>
-    <button mat-icon-button aria-label="User" (click)="authenticate()">
+    <button mat-icon-button aria-label="User">
       <mat-icon aria-hidden="false" fontIcon="account_circle"></mat-icon>
     </button>
   </mat-toolbar>

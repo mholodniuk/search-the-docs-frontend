@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './notfound/not-found.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 
 
@@ -11,8 +10,7 @@ import { HttpClientModule } from "@angular/common/http";
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class SharedModule {
