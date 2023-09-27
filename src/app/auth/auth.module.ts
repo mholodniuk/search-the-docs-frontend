@@ -6,8 +6,8 @@ import { RouterModule } from "@angular/router";
 import { SharedModule } from "../shared/shared.module";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
-import { AuthEffects } from "./store/auth.effects";
-import { AuthReducer } from "./store/auth.reducer";
+import { UserEffects } from "./store/user.effects";
+import { UserReducer } from "./store/user.reducer";
 import { AuthComponent } from "./components/auth.component";
 import { LoginComponent } from "./components/login/login.component";
 import { MatCardModule } from "@angular/material/card";
@@ -29,8 +29,8 @@ import { CommonModule } from "@angular/common";
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    StoreModule.forFeature('auth', AuthReducer),
-    EffectsModule.forFeature([AuthEffects]),
+    StoreModule.forFeature('auth', UserReducer),
+    EffectsModule.forFeature([UserEffects]),
     ReactiveFormsModule,
     CommonModule,
   ],

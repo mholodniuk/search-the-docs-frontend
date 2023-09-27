@@ -3,9 +3,9 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { LoginEvent } from "./login.types";
 import { select, Store } from "@ngrx/store";
 import { AppState } from "../../../store/app.state";
-import * as AuthActions from '../../store/auth.actions';
+import * as AuthActions from '../../store/user.actions';
 import { Observable } from "rxjs";
-import { errorSelector } from "../../store/auth.selector";
+import { errorSelector } from "../../store/user.selector";
 
 @Component({
   selector: 'app-login',
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      this.store.dispatch(AuthActions.retrieveAuthToken(this.form.value as LoginEvent))
+      this.store.dispatch(AuthActions.loadAuthToken(this.form.value as LoginEvent))
     }
   }
 

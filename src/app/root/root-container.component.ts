@@ -3,10 +3,10 @@ import { Observable } from "rxjs";
 import { select, Store } from "@ngrx/store";
 import { AppState } from "../store/app.state";
 import { User } from "../user/user.model";
-import { userSelector } from "../user/store/user.selector";
 import { RoomsDto } from "../room.service";
 import { Router } from "@angular/router";
-import * as AuthActions from '../auth/store/auth.actions';
+import * as AuthActions from '../auth/store/user.actions';
+import { userSelector } from "../auth/store/user.selector";
 
 @Component({
   selector: 'root-container',
