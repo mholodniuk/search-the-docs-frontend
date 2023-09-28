@@ -23,6 +23,7 @@ export const UserReducer = createReducer(
     return {
       ...state,
       loading: false,
+      error: undefined,
       token: action.token
     }
   }),
@@ -41,7 +42,7 @@ export const UserReducer = createReducer(
       ...state,
       loading: false,
       token: undefined,
-      error: "Could not perform auto log-in"
+      error: undefined
     }
   }),
 
@@ -65,6 +66,7 @@ export const UserReducer = createReducer(
     return {
       ...state,
       user: action.user,
+      error: undefined,
       loading: false
     }
   }),

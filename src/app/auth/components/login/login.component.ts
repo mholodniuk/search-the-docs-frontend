@@ -4,7 +4,7 @@ import { LoginEvent } from "./login.types";
 import { select, Store } from "@ngrx/store";
 import { AppState } from "../../../store/app.state";
 import * as AuthActions from '../../store/user.actions';
-import { Observable } from "rxjs";
+import { map, Observable, startWith, switchMap } from "rxjs";
 import { errorSelector } from "../../store/user.selector";
 
 @Component({
@@ -25,7 +25,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.error$ = this.store.pipe(select(errorSelector));
+    this.error$ = this.store.pipe(
+      select(errorSelector),
+      switchMap((error) => {
+        return this.form.valueChanges.pipe(
+          map(() => undefined),
+          startWith(error),
+        )
+      })
+    );
   }
 
   submit() {
