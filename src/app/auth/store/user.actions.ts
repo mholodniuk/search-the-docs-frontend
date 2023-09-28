@@ -19,12 +19,12 @@ export const authTokenFailure = createAction(
 
 export const loadUserData = createAction(
   '[User] Load User Data',
-  props<{ id: number }>()
+  props<{ userId: number }>()
 );
 
 export const userDataLoaded = createAction(
   '[User] User Data Loaded',
-  props<{ user?: User }>()
+  props<{ user: User }>()
 );
 
 export const clearUserData = createAction(

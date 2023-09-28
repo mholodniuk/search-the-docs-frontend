@@ -1,18 +1,6 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <mat-list style="width: 20vw">
-      <div mat-subheader>Rooms</div>
-      <mat-list-item *ngFor="let room of mock.rooms">
-        <mat-icon matListItemIcon>folder</mat-icon>
-        <div matListItemTitle>
-          {{room.name}}
-        </div>
-        <div matListItemLine>
-          {{room.createdAt | date}}, {{room.documentCount}} {{room.documentCount > 1 ? "documents" : "document"}}
-        </div>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-    </mat-list>
+    <app-room-collection [extendDisplay]="true"></app-room-collection>
   </mat-drawer>
 
   <mat-toolbar class="flex-space-between">

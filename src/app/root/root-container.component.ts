@@ -3,10 +3,10 @@ import { Observable } from "rxjs";
 import { select, Store } from "@ngrx/store";
 import { AppState } from "../store/app.state";
 import { User } from "../user/user.model";
-import { RoomsDto } from "../room.service";
 import { Router } from "@angular/router";
 import * as AuthActions from '../auth/store/user.actions';
 import { userSelector } from "../auth/store/user.selector";
+import { RoomService } from "../room/service/room.service";
 
 @Component({
   selector: 'root-container',
@@ -15,9 +15,9 @@ import { userSelector } from "../auth/store/user.selector";
 })
 export class RootContainerComponent implements OnInit {
   user$: Observable<User | undefined>;
-  mock: RoomsDto = {count: 0, rooms: []};
 
   constructor(
+    private roomService: RoomService,
     private store: Store<AppState>,
     private router: Router) {
   }

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "../service/auth-service";
-import * as AuthActions from './user.actions';
+import * as UserActions from './user.actions';
 import { catchError, map, of, switchMap, tap } from "rxjs";
 import { Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
@@ -11,12 +11,12 @@ import { UserService } from "../../user/service/user.service";
 export class UserEffects {
   authenticate$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.loadAuthToken),
+      ofType(UserActions.loadAuthToken),
       switchMap((action) => {
         return this.authService.authenticate({username: action.username, password: action.password}).pipe(
           tap((authResponse) => this.authService.setAuthToken(authResponse)),
-          map((token) => AuthActions.authTokenLoaded(token)),
-          catchError((error: HttpErrorResponse) => of(AuthActions.authTokenFailure({error: error.error.message})))
+          map((token) => UserActions.authTokenLoaded(token)),
+          catchError((error: HttpErrorResponse) => of(UserActions.authTokenFailure({error: error.error.message})))
         )
       })
     )
@@ -24,16 +24,16 @@ export class UserEffects {
 
   autoAuthenticate$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.tryAutoAuthenticate),
+      ofType(UserActions.tryAutoAuthenticate),
       switchMap(() => {
         return this.authService.getAuthToken().pipe(
           map((token) => {
             if (token) {
-              return AuthActions.authTokenLoaded(token);
+              return UserActions.authTokenLoaded(token);
             }
-            return AuthActions.autoAuthenticateFailure();
+            return UserActions.autoAuthenticateFailure();
           }),
-          catchError(() => of(AuthActions.autoAuthenticateFailure()))
+          catchError(() => of(UserActions.autoAuthenticateFailure()))
         )
       })
     )
@@ -42,7 +42,7 @@ export class UserEffects {
   authenticationRedirect$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthActions.authTokenLoaded),
+        ofType(UserActions.authTokenLoaded),
         tap(() => void this.router.navigate(['/']))
       ),
     {dispatch: false}
@@ -51,7 +51,7 @@ export class UserEffects {
   authenticationFailureCleanup$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthActions.authTokenFailure),
+        ofType(UserActions.authTokenFailure),
         tap(() => this.authService.deleteAuthToken())
       ),
     {dispatch: false}
@@ -60,11 +60,11 @@ export class UserEffects {
   logOut$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthActions.logOut),
+        ofType(UserActions.logOut),
         map(() => {
           this.authService.deleteAuthToken();
           void this.router.navigate(['/']);
-          return AuthActions.clearUserData()
+          return UserActions.clearUserData()
         }),
       )
   );
@@ -72,13 +72,13 @@ export class UserEffects {
   getUserData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        AuthActions.loadUserData,
-        AuthActions.authTokenLoaded
+        UserActions.loadUserData,
+        UserActions.authTokenLoaded
       ),
       switchMap((action) =>
-        this.userService.getUser(action.id).pipe(
-          map((user) => AuthActions.userDataLoaded({user: user})),
-          catchError(() => of(AuthActions.loadDataFailure()))
+        this.userService.getUser(action.userId).pipe(
+          map((user) => UserActions.userDataLoaded({user: user})),
+          catchError(() => of(UserActions.loadDataFailure()))
         )
       )
     )
@@ -86,8 +86,8 @@ export class UserEffects {
 
   clearUserData$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.clearUserData),
-      map((_) => AuthActions.userDataCleared())
+      ofType(UserActions.clearUserData),
+      map((_) => UserActions.userDataCleared())
     )
   );
 

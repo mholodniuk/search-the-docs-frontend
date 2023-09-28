@@ -7,7 +7,10 @@ import { AuthModule } from "./auth/auth.module";
 import { SharedModule } from "./shared/shared.module";
 import { RootModule } from "./root/root.module";
 import { UserModule } from "./user/user.module";
+import { RoomModule } from "./room/room.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -19,8 +22,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     AppRoutingModule,
     UserModule,
     SharedModule,
+    RoomModule,
     AuthModule,
     RootModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 40,
+      logOnly: environment.production,
+    })
   ],
   bootstrap: [AppComponent]
 })

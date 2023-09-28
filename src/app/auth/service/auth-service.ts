@@ -6,8 +6,8 @@ import { environment } from "../../../environments/environment";
 
 @Injectable()
 export class AuthService {
-  private readonly TOKEN_KEY = "search.the.docs";
-  private readonly apiUrl = `${environment.api}/users`;
+  readonly TOKEN_KEY = "search.the.docs";
+  readonly apiUrl = `${environment.api}/users`;
 
   constructor(private http: HttpClient) {
   }

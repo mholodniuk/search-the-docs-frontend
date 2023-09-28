@@ -15,6 +15,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../../environments/environment";
 import { SharedModule } from "../shared/shared.module";
 import { MatMenuModule } from "@angular/material/menu";
+import { RoomModule } from "../room/room.module";
 
 
 @NgModule({
@@ -29,7 +30,6 @@ import { MatMenuModule } from "@angular/material/menu";
     RouterOutlet,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule,
     MatIconModule,
     MatCardModule,
     MatButtonModule,
@@ -38,10 +38,7 @@ import { MatMenuModule } from "@angular/material/menu";
     SharedModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot(),
-    StoreDevtoolsModule.instrument({
-      maxAge: 40,
-      logOnly: environment.production,
-    }),
+    RoomModule
   ]
 })
 export class RootModule {
