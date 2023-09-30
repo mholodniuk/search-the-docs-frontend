@@ -14,7 +14,9 @@ export class RoomCollectionComponent implements OnInit {
   rooms$: Observable<Room[]>;
 
   @Input()
-  extendDisplay: boolean;
+  extendDisplay: boolean = false;
+  @Input()
+  isOwned: boolean = true;
 
   constructor(private store: Store<AppState>) {
   }

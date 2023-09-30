@@ -3,10 +3,14 @@ import { Room } from "../model/room.model";
 
 
 export const loadAvailableRooms = createAction(
-  '[Auth] Load Available Rooms'
+  '[Room] Load Available Rooms'
+);
+
+export const clearAvailableRooms = createAction(
+  '[Room] Clear Available Rooms'
 );
 
 export const availableRoomsLoaded = createAction(
-  '[Auth] Available Rooms Loaded',
+  '[Room] Available Rooms Loaded',
   props<{ rooms: Room[], count: number }>()
 );

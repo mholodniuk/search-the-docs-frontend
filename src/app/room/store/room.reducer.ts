@@ -17,5 +17,13 @@ export const RoomReducer = createReducer(
       rooms: action.rooms,
       count: action.count
     }
+  }),
+
+  on(RoomActions.clearAvailableRooms, (state) => {
+    return {
+      ...state,
+      rooms: [],
+      count: 0
+    }
   })
 );
