@@ -6,3 +6,7 @@ export const selectRoomState = createFeatureSelector<RoomState>('room');
 export const roomsSelector = createSelector(selectRoomState, (state) => {
   return state.rooms;
 });
+
+export const selectedRoomSelector = createSelector(selectRoomState, (state) => {
+  return state.selectedRoom;
+});

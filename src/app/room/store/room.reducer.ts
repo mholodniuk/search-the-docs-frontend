@@ -4,6 +4,7 @@ import * as RoomActions from './room.actions';
 
 
 const initialState: RoomState = {
+  selectedRoom: undefined,
   rooms: [],
   count: 0
 };
@@ -24,6 +25,13 @@ export const RoomReducer = createReducer(
       ...state,
       rooms: [],
       count: 0
+    }
+  }),
+
+  on(RoomActions.selectRoom, (state, action) => {
+    return {
+      ...state,
+      selectedRoom: state.rooms.find((room) => room.id === action.id)
     }
   })
 );

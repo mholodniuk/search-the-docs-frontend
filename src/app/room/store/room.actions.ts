@@ -14,3 +14,8 @@ export const availableRoomsLoaded = createAction(
   '[Room] Available Rooms Loaded',
   props<{ rooms: Room[], count: number }>()
 );
+
+export const selectRoom = createAction(
+  '[Room] Select Room',
+  props<{ id: number }>()
+);
