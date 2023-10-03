@@ -6,5 +6,16 @@
     <div matListItemTitle> {{room.name}} </div>
     <div *ngIf="extendDisplay" matListItemLine> {{room.createdAt | date}}, {{documentCount(room)}} </div>
   </mat-list-item>
-  <mat-divider></mat-divider>
 </mat-list>
+<mat-divider/>
+<div class="action-sections">
+  <button mat-fab color="white" matTooltip="Upload document" [disabled]="!(userLoggedIn$ | async)">
+    <mat-icon>attachment</mat-icon>
+  </button>
+  <button mat-fab color="white" matTooltip="Create room" [disabled]="!(userLoggedIn$ | async)">
+    <mat-icon>create_new_folder</mat-icon>
+  </button>
+  <button mat-fab color="white" matTooltip="Share room" [disabled]="!(userLoggedIn$ | async)">
+    <mat-icon>share</mat-icon>
+  </button>
+</div>

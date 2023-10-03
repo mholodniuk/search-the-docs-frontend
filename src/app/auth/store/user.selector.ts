@@ -10,3 +10,7 @@ export const errorSelector = createSelector(selectUserState, (state) => {
 export const userSelector = createSelector(selectUserState, (state) => {
   return state.user;
 });
+
+export const userLoggedInSelector = createSelector(selectUserState, (state) => {
+  return state.user !== undefined;
+});

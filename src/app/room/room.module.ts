@@ -12,6 +12,8 @@ import { RoomEffects } from "./store/room.effects";
 import { RouterLink } from "@angular/router";
 import { RoomComponent } from "./components/room/room.component";
 import { RoomRoutingModule } from "./room-routing.module";
+import { MatButtonModule } from "@angular/material/button";
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { RoomRoutingModule } from "./room-routing.module";
     MatIconModule,
     MatListModule,
     RoomRoutingModule,
+    MatButtonModule,
+    MatTooltipModule,
     StoreModule.forFeature('room', RoomReducer),
     EffectsModule.forFeature([RoomEffects]),
   ]

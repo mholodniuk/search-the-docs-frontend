@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from "@ngrx/store";
+import { select, Store } from "@ngrx/store";
 import { AppState } from "../../../store/app.state";
 import { Observable } from "rxjs";
 import { Room } from "../../model/room.model";
@@ -17,6 +17,6 @@ export class RoomComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedRoom$ = this.store.select(selectedRoomSelector);
+    this.selectedRoom$ = this.store.pipe(select(selectedRoomSelector));
   }
 }

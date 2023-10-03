@@ -5,6 +5,7 @@ import { AppState } from "../../../store/app.state";
 import { roomsSelector } from "../../store/room.selector";
 import { Room } from "../../model/room.model";
 import * as RoomActions from '../../store/room.actions';
+import { userLoggedInSelector, userSelector } from "../../../auth/store/user.selector";
 
 
 @Component({
@@ -14,6 +15,7 @@ import * as RoomActions from '../../store/room.actions';
 })
 export class RoomListComponent implements OnInit {
   rooms$: Observable<Room[]>;
+  userLoggedIn$: Observable<boolean>;
 
   @Input()
   extendDisplay: boolean = false;
@@ -23,6 +25,7 @@ export class RoomListComponent implements OnInit {
 
   ngOnInit(): void {
     this.rooms$ = this.store.pipe(select(roomsSelector));
+    this.userLoggedIn$ = this.store.pipe(select(userLoggedInSelector));
   }
 
   selectRoom(id: number): void {

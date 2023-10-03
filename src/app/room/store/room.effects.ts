@@ -4,7 +4,7 @@ import { RoomService } from "../service/room.service";
 import * as UserActions from '../../auth/store/user.actions';
 import { filter, map, switchMap, withLatestFrom } from "rxjs";
 import * as RoomActions from './room.actions';
-import { Store } from "@ngrx/store";
+import { select, Store } from "@ngrx/store";
 import { AppState } from "../../store/app.state";
 import { userSelector } from "../../auth/store/user.selector";
 import { isDefined } from "../../shared/utils/utils.functions";
@@ -29,7 +29,8 @@ export class RoomEffects {
   loadRooms$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RoomActions.loadAvailableRooms),
-      withLatestFrom(this.store.select(userSelector).pipe(
+      withLatestFrom(this.store.pipe(
+        select(userSelector),
         filter(isDefined),
         map((user) => user.id)
       )),
