@@ -5,7 +5,9 @@ import { AppState } from "../../../store/app.state";
 import { roomsSelector } from "../../store/room.selector";
 import { Room } from "../../model/room.model";
 import * as RoomActions from '../../store/room.actions';
-import { userLoggedInSelector, userSelector } from "../../../auth/store/user.selector";
+import { userLoggedInSelector } from "../../../auth/store/user.selector";
+import { MatDialog } from "@angular/material/dialog";
+import { CreateRoomDialogComponent } from "../create-room-dialog/create-room-dialog.component";
 
 
 @Component({
@@ -20,7 +22,10 @@ export class RoomListComponent implements OnInit {
   @Input()
   extendDisplay: boolean = false;
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
@@ -30,6 +35,10 @@ export class RoomListComponent implements OnInit {
 
   selectRoom(id: number): void {
     this.store.dispatch(RoomActions.selectRoom({id: id}));
+  }
+
+  openCreateRoomDialog(): void {
+    this.dialog.open(CreateRoomDialogComponent);
   }
 
   documentCount(room: Room): string {

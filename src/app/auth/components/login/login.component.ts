@@ -41,5 +41,4 @@ export class LoginComponent implements OnInit {
       this.store.dispatch(AuthActions.loadAuthToken(this.form.value as LoginEvent))
     }
   }
-
 }

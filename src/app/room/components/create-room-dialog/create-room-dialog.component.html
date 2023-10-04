@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>New room</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="create-room-form">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Name" formControlName="name">
+      </mat-form-field>
+      <mat-checkbox color="primary" formControlName="isPrivate">Private</mat-checkbox>
+    </div>
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [disabled]="!form.valid" type="submit" [mat-dialog-close]="true">Create</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
