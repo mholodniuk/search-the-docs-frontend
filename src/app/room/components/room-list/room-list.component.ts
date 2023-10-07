@@ -8,6 +8,7 @@ import * as RoomActions from '../../store/room.actions';
 import { userLoggedInSelector } from "../../../auth/store/user.selector";
 import { MatDialog } from "@angular/material/dialog";
 import { CreateRoomDialogComponent } from "../create-room-dialog/create-room-dialog.component";
+import { ShareRoomDialogComponent } from "../share-room-dialog/share-room-dialog.component";
 
 
 @Component({
@@ -39,6 +40,10 @@ export class RoomListComponent implements OnInit {
 
   openCreateRoomDialog(): void {
     this.dialog.open(CreateRoomDialogComponent);
+  }
+
+  openShareRoomDialog(): void {
+    this.dialog.open(ShareRoomDialogComponent);
   }
 
   documentCount(room: Room): string {

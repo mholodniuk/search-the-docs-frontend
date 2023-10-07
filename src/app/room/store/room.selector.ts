@@ -7,6 +7,10 @@ export const roomsSelector = createSelector(selectRoomState, (state) => {
   return state.rooms;
 });
 
+export const publicRoomsSelector = createSelector(selectRoomState, (state) => {
+  return state.rooms.filter(room => (!room.isPrivate && room.isOwner));
+});
+
 export const selectedRoomSelector = createSelector(selectRoomState, (state) => {
   return state.selectedRoom;
 });

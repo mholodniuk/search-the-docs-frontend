@@ -12,10 +12,12 @@
   <button mat-fab color="white" matTooltip="Upload document" [disabled]="!(userLoggedIn$ | async)">
     <mat-icon>attachment</mat-icon>
   </button>
-  <button mat-fab color="white" matTooltip="Create room" (click)="openCreateRoomDialog()" [disabled]="!(userLoggedIn$ | async)">
+  <button mat-fab color="white" matTooltip="Create room" (click)="openCreateRoomDialog()"
+          [disabled]="!(userLoggedIn$ | async)">
     <mat-icon>create_new_folder</mat-icon>
   </button>
-  <button mat-fab color="white" matTooltip="Share room" [disabled]="!(userLoggedIn$ | async)">
+  <button mat-fab color="white" matTooltip="Share room" (click)="openShareRoomDialog()"
+          [disabled]="!(userLoggedIn$ | async)">
     <mat-icon>share</mat-icon>
   </button>
 </div>

@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Share your room</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <div class="create-room-form">
+      <mat-form-field>
+        <mat-label>Room</mat-label>
+        <mat-select formControlName="roomId">
+          <mat-option *ngFor="let room of publicRooms$ | async" [value]="room.id">
+            {{room.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Access right</mat-label>
+        <mat-select formControlName="accessRight">
+          <mat-option *ngFor="let access of ['FULL', 'VIEW']" [value]="access">
+            {{access}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput placeholder="User" formControlName="userToInvite">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput placeholder="Key Name (Optional)" formControlName="keyName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Choose expiration date</mat-label>
+        <input matInput [matDatepicker]="picker" [matDatepickerFilter]="pastDateFilter"
+               (dateChange)="onDateSelected($event.value)">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button
+          [disabled]="!form.valid"
+          (click)="submit()"
+          type="submit"
+          [mat-dialog-close]="true">Create
+  </button>
+  <button mat-button color="warn" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

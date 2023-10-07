@@ -10,6 +10,7 @@ import { userSelector } from "../../auth/store/user.selector";
 import { isDefined } from "../../shared/utils/utils.functions";
 import { HttpErrorResponse } from "@angular/common/http";
 import { InvalidResourceUpdateException } from "../../shared/types/errors";
+import { AccessApiService } from "../service/access-api.service";
 
 @Injectable()
 export class RoomEffects {
@@ -63,10 +64,25 @@ export class RoomEffects {
     )
   );
 
+  grantRoomAccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.grantRoomAccess),
+      switchMap((action) => {
+        return this.accessService.grantAccess(action).pipe(
+          map(_ => RoomActions.roomAccessGranted()),
+          catchError((error: HttpErrorResponse) =>
+            of(RoomActions.grantAccessFailure({message: error.error.message}))
+          )
+        )
+      }),
+    )
+  );
+
 
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private roomService: RoomApiService) {
+    private roomService: RoomApiService,
+    private accessService: AccessApiService) {
   }
 }

@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { Room } from "../model/room.model";
 import { ErrorMessage } from "../../shared/types/errors";
+import { GrantAccessRequest } from "../model/access.model";
 
 const ROOM_ACTION_TAG = '[Room]';
 
@@ -35,4 +36,18 @@ export const roomCreated = createAction(
 export const roomCreateFailure = createAction(
   `${ROOM_ACTION_TAG} Room Create Failure`,
   props<{ message: ErrorMessage[] }>()
+);
+
+export const grantRoomAccess = createAction(
+  `${ROOM_ACTION_TAG} Grant Room Access`,
+  props<GrantAccessRequest>()
+);
+
+export const roomAccessGranted = createAction(
+  `${ROOM_ACTION_TAG} Room Access Granted`
+);
+
+export const grantAccessFailure = createAction(
+  `${ROOM_ACTION_TAG} Grant Room Access Failed`,
+  props<{ message: string }>()
 );

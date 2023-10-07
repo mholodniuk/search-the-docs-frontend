@@ -22,12 +22,18 @@ import { MatRadioModule } from "@angular/material/radio";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 
+import { ShareRoomDialogComponent } from './components/share-room-dialog/share-room-dialog.component';
+import { MatSelectModule } from "@angular/material/select";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+
 
 @NgModule({
   declarations: [
     RoomListComponent,
     RoomComponent,
-    CreateRoomDialogComponent
+    CreateRoomDialogComponent,
+    ShareRoomDialogComponent
   ],
   exports: [
     RoomListComponent
@@ -48,8 +54,11 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatCardModule,
     MatInputModule,
     MatRadioModule,
+    MatSelectModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class RoomModule {
