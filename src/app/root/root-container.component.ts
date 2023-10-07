@@ -6,7 +6,6 @@ import { User } from "../user/user.model";
 import { Router } from "@angular/router";
 import * as AuthActions from '../auth/store/user.actions';
 import { userSelector } from "../auth/store/user.selector";
-import { RoomService } from "../room/service/room.service";
 
 @Component({
   selector: 'root-container',
@@ -17,7 +16,6 @@ export class RootContainerComponent implements OnInit {
   user$: Observable<User | undefined>;
 
   constructor(
-    private roomService: RoomService,
     private store: Store<AppState>,
     private router: Router) {
   }

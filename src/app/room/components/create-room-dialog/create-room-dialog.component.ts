@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { AppState } from "../../../store/app.state";
+import * as RoomActions from '../../store/room.actions';
+import { CreateRoomEvent } from "../../model/room.model";
 
 @Component({
   selector: 'app-create-room-dialog',
@@ -21,7 +23,7 @@ export class CreateRoomDialogComponent {
 
   submit() {
     if (this.form.valid) {
-      console.log("submitted");
+      this.store.dispatch(RoomActions.createRoom(this.form.value as CreateRoomEvent))
     }
   }
 }

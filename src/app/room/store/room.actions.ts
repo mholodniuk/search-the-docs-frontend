@@ -1,21 +1,38 @@
 import { createAction, props } from "@ngrx/store";
 import { Room } from "../model/room.model";
+import { ErrorMessage } from "../../shared/types/errors";
 
+const ROOM_ACTION_TAG = '[Room]';
 
 export const loadAvailableRooms = createAction(
-  '[Room] Load Available Rooms'
+  `${ROOM_ACTION_TAG} Load Available Rooms`
 );
 
 export const clearAvailableRooms = createAction(
-  '[Room] Clear Available Rooms'
+  `${ROOM_ACTION_TAG} Clear Available Rooms`
 );
 
 export const availableRoomsLoaded = createAction(
-  '[Room] Available Rooms Loaded',
+  `${ROOM_ACTION_TAG} Available Rooms Loaded`,
   props<{ rooms: Room[], count: number }>()
 );
 
 export const selectRoom = createAction(
-  '[Room] Select Room',
+  `${ROOM_ACTION_TAG} Select Room`,
   props<{ id: number }>()
+);
+
+export const createRoom = createAction(
+  `${ROOM_ACTION_TAG} Create Room`,
+  props<{ name: string, isPrivate: boolean }>()
+);
+
+export const roomCreated = createAction(
+  `${ROOM_ACTION_TAG} Room Created`,
+  props<{ room: Room }>()
+);
+
+export const roomCreateFailure = createAction(
+  `${ROOM_ACTION_TAG} Room Create Failure`,
+  props<{ message: ErrorMessage[] }>()
 );

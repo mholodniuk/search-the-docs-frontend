@@ -5,7 +5,7 @@ import * as UserActions from './user.actions';
 import { catchError, map, of, switchMap, tap } from "rxjs";
 import { Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
-import { UserService } from "../../user/service/user.service";
+import { UserApiService } from "../../user/service/user-api.service";
 
 @Injectable()
 export class UserEffects {
@@ -94,7 +94,7 @@ export class UserEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private userService: UserService,
+    private userService: UserApiService,
     private router: Router) {
   }
 }

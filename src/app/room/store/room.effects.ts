@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { RoomService } from "../service/room.service";
+import { RoomApiService } from "../service/room-api.service";
 import * as UserActions from '../../auth/store/user.actions';
-import { filter, map, switchMap, withLatestFrom } from "rxjs";
+import { catchError, filter, map, of, switchMap, withLatestFrom } from "rxjs";
 import * as RoomActions from './room.actions';
 import { select, Store } from "@ngrx/store";
 import { AppState } from "../../store/app.state";
 import { userSelector } from "../../auth/store/user.selector";
 import { isDefined } from "../../shared/utils/utils.functions";
+import { HttpErrorResponse } from "@angular/common/http";
+import { InvalidResourceUpdateException } from "../../shared/types/errors";
 
 @Injectable()
 export class RoomEffects {
@@ -32,7 +34,7 @@ export class RoomEffects {
       withLatestFrom(this.store.pipe(
         select(userSelector),
         filter(isDefined),
-        map((user) => user.id)
+        map(user => user.id)
       )),
       switchMap(([_, userId]) => {
         return this.roomService.getRoomsByUserId(userId).pipe(
@@ -42,9 +44,29 @@ export class RoomEffects {
     )
   );
 
+  createRoom$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.createRoom),
+      withLatestFrom(this.store.pipe(
+        select(userSelector),
+        filter(isDefined),
+        map(user => user.id)
+      )),
+      switchMap(([action, userId]) => {
+        return this.roomService.createRoom({name: action.name, isPrivate: action.isPrivate, ownerId: userId}).pipe(
+          map(response => RoomActions.roomCreated({room: response})),
+          catchError((error: HttpErrorResponse) =>
+            of(RoomActions.roomCreateFailure({message: (error.error as InvalidResourceUpdateException).errors}))
+          )
+        )
+      })
+    )
+  );
+
+
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private roomService: RoomService) {
+    private roomService: RoomApiService) {
   }
 }

@@ -6,7 +6,8 @@ import * as RoomActions from './room.actions';
 const initialState: RoomState = {
   selectedRoom: undefined,
   rooms: [],
-  count: 0
+  count: 0,
+  creating: false
 };
 
 export const RoomReducer = createReducer(
@@ -20,7 +21,7 @@ export const RoomReducer = createReducer(
     }
   }),
 
-  on(RoomActions.clearAvailableRooms, (state) => {
+  on(RoomActions.clearAvailableRooms, state => {
     return {
       ...state,
       rooms: [],
@@ -32,6 +33,29 @@ export const RoomReducer = createReducer(
     return {
       ...state,
       selectedRoom: state.rooms.find((room) => room.id === action.id)
+    }
+  }),
+
+  on(RoomActions.createRoom, state => {
+    return {
+      ...state,
+      creating: true
+    }
+  }),
+
+  on(RoomActions.roomCreated, (state, action) => {
+    return {
+      ...state,
+      rooms: [...state.rooms, {...action.room, isOwner: true}],
+      count: state.count + 1,
+      creating: false
+    }
+  }),
+
+  on(RoomActions.roomCreateFailure, state => {
+    return {
+      ...state,
+      creating: false
     }
   })
 );

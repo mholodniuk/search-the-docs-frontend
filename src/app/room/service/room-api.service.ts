@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from "../../../environments/environment";
 import { HttpClient } from "@angular/common/http";
-import { RoomCollection } from "../model/room.model";
+import { CreateRoomRequest, Room, RoomCollection } from "../model/room.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class RoomService {
+export class RoomApiService {
   readonly usersUrl = `${environment.api}/users`;
   readonly roomsUrl = `${environment.api}/rooms`;
 
@@ -17,4 +17,7 @@ export class RoomService {
     return this.http.get<RoomCollection>(`${this.usersUrl}/${userId}/rooms`);
   }
 
+  createRoom(createRoomRequest: CreateRoomRequest) {
+    return this.http.post<Room>(`${this.roomsUrl}`, createRoomRequest);
+  }
 }
