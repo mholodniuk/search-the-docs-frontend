@@ -9,7 +9,8 @@
 </mat-list>
 <mat-divider/>
 <div class="action-sections">
-  <button mat-fab color="white" matTooltip="Upload document" [disabled]="!(userLoggedIn$ | async)">
+  <button mat-fab color="white" matTooltip="Upload document" (click)="test()"
+          [disabled]="!(userLoggedIn$ | async)">
     <mat-icon>attachment</mat-icon>
   </button>
   <button mat-fab color="white" matTooltip="Create room" (click)="openCreateRoomDialog()"

@@ -9,6 +9,8 @@ import { userLoggedInSelector } from "../../../auth/store/user.selector";
 import { MatDialog } from "@angular/material/dialog";
 import { CreateRoomDialogComponent } from "../create-room-dialog/create-room-dialog.component";
 import { ShareRoomDialogComponent } from "../share-room-dialog/share-room-dialog.component";
+import * as SnackbarActions from "../../../shared/snackbar/store/snackbar.actions";
+import { ERROR } from "../../../shared/snackbar/snackbar.config";
 
 
 @Component({
@@ -40,6 +42,16 @@ export class RoomListComponent implements OnInit {
 
   openCreateRoomDialog(): void {
     this.dialog.open(CreateRoomDialogComponent);
+  }
+
+  test() {
+    this.store.dispatch(SnackbarActions.openSnackbar({
+      config: {
+        message: 'Room access granted for',
+        action: 'Close',
+        config: ERROR
+      }
+    }))
   }
 
   openShareRoomDialog(): void {
