@@ -6,7 +6,7 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { SnackbarEffects } from "./snackbar/store/snackbar.effects";
 import { SnackbarReducer } from "./snackbar/store/snackbar.reducer";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MaterialModule } from "../material/material.module";
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
   imports: [
     CommonModule,
     HttpClientModule,
-    MatSnackBarModule,
+    MaterialModule,
     StoreModule.forFeature('snackbar', SnackbarReducer),
     EffectsModule.forFeature([SnackbarEffects]),
   ]

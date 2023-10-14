@@ -10,29 +10,24 @@ import { UserEffects } from "./store/user.effects";
 import { UserReducer } from "./store/user.reducer";
 import { AuthComponent } from "./components/auth.component";
 import { LoginComponent } from "./components/login/login.component";
-import { MatCardModule } from "@angular/material/card";
-import { MatInputModule } from "@angular/material/input";
-import { MatButtonModule } from "@angular/material/button";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { MaterialModule } from "../material/material.module";
 
 
 @NgModule({
   declarations: [
     AuthComponent,
-    LoginComponent,
     LoginComponent
   ],
   imports: [
     RouterModule.forChild([{path: '', component: AuthComponent}]),
+    CommonModule,
     SharedModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
+    MaterialModule,
+    ReactiveFormsModule,
     StoreModule.forFeature('auth', UserReducer),
     EffectsModule.forFeature([UserEffects]),
-    ReactiveFormsModule,
-    CommonModule,
   ],
   providers: [
     AuthService, {
