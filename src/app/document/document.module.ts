@@ -6,7 +6,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { DocumentReducer } from "./store/document.reducer";
 import { DocumentEffects } from "./store/document.effects";
 import { SharedModule } from "../shared/shared.module";
-import { MaterialModule } from "../material/material.module";
+import { MaterialModule } from "../ui/material.module";
 
 
 

@@ -6,7 +6,7 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { SnackbarEffects } from "./snackbar/store/snackbar.effects";
 import { SnackbarReducer } from "./snackbar/store/snackbar.reducer";
-import { MaterialModule } from "../material/material.module";
+import { MaterialModule } from "../ui/material.module";
 
 
 @NgModule({

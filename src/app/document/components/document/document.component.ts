@@ -20,8 +20,4 @@ export class DocumentComponent {
   onMouseLeaver() {
     this.isActive = false;
   }
-
-  test() {
-    console.log("test")
-  }
 }

@@ -1,13 +1,4 @@
-<mat-list style="width: 100%">
-  <div mat-subheader style="font-size: 1.5rem">Rooms</div>
-  <mat-list-item [routerLink]="['/rooms', room.id]" (click)="selectRoom(room.id)" *ngFor="let room of rooms$ | async">
-    <mat-icon matListItemIcon *ngIf="room.isOwner">folder</mat-icon>
-    <mat-icon matListItemIcon *ngIf="!room.isOwner">folder_shared</mat-icon>
-    <div matListItemTitle> {{room.name}} </div>
-    <div *ngIf="extendDisplay" matListItemLine> {{room.createdAt | date}}, {{documentCount(room)}} </div>
-  </mat-list-item>
-</mat-list>
-<mat-divider/>
+<div mat-subheader style="font-size: 1.5rem">Rooms</div>
 <div class="action-sections">
   <button mat-fab color="white" matTooltip="Upload document" (click)="test()"
           [disabled]="!(userLoggedIn$ | async)">
@@ -22,3 +13,13 @@
     <mat-icon>share</mat-icon>
   </button>
 </div>
+<mat-divider/>
+<mat-list style="width: 100%">
+  <mat-list-item [routerLink]="['/rooms', room.id]" (click)="selectRoom(room.id)" *ngFor="let room of rooms$ | async">
+    <mat-icon matListItemIcon *ngIf="room.isOwner">folder</mat-icon>
+    <mat-icon matListItemIcon *ngIf="!room.isOwner">folder_shared</mat-icon>
+    <div matListItemTitle> {{room.name}} </div>
+    <div *ngIf="extendDisplay" matListItemLine> {{room.createdAt | date}}, {{documentCount(room)}} </div>
+  </mat-list-item>
+</mat-list>
+<mat-divider *ngIf="userLoggedIn$ | async"/>

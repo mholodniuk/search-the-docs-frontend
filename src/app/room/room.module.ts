@@ -13,7 +13,7 @@ import { CreateRoomDialogComponent } from './components/create-room-dialog/creat
 import { ReactiveFormsModule } from "@angular/forms";
 import { ShareRoomDialogComponent } from './components/share-room-dialog/share-room-dialog.component';
 import { DocumentModule } from "../document/document.module";
-import { MaterialModule } from "../material/material.module";
+import { MaterialModule } from "../ui/material.module";
 
 
 @NgModule({

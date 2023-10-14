@@ -12,7 +12,7 @@ import { AuthComponent } from "./components/auth.component";
 import { LoginComponent } from "./components/login/login.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { MaterialModule } from "../material/material.module";
+import { MaterialModule } from "../ui/material.module";
 
 
 @NgModule({

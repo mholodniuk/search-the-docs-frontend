@@ -1,6 +1,6 @@
 <div *ngIf="selectedRoom$ | async as room" class="card-grid">
   <div *ngIf="!(loading$ | async) else spinner">
-    <mat-grid-list cols="6" rowHeight="4:6">
+    <mat-grid-list [cols]="columns" rowHeight="4:6">
       <mat-grid-tile-header>{{room.name}}</mat-grid-tile-header>
       <mat-grid-tile *ngFor="let item of documents$ | async">
         <document class="document-card" [title]="item.name" [file]="item.contentType"/>

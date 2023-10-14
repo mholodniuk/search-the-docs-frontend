@@ -4,9 +4,27 @@
       <div class="document-header">
         <span class="title" [matTooltip]="title">{{title}}</span>
         <!-- todo: get document thumbnail -->
-        <button mat-icon-button class="more-button" (click)="test()">
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>info</mat-icon>
+            <span style="font-size: 0.8rem">More info</span>
+          </button>
+          <button mat-menu-item style="height: 6px !important;">
+            <mat-icon>cloud_download</mat-icon>
+            <span style="font-size: 0.8rem">Download</span>
+          </button>
+          <button mat-menu-item style="height: 6px !important;">
+            <mat-icon>style</mat-icon>
+            <span style="font-size: 0.8rem">Tag</span>
+          </button>
+          <button mat-menu-item style="height: 6px !important;">
+            <mat-icon>remove_circle</mat-icon>
+            <span style="font-size: 0.8rem">Remove</span>
+          </button>
+        </mat-menu>
       </div>
       <div class="content file-thumbnail">
         <mat-icon style="transform: scale(3)" [svgIcon]="file"></mat-icon>
