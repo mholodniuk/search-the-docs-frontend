@@ -21,11 +21,13 @@ import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-
+import { MatGridListModule } from '@angular/material/grid-list';
 import { ShareRoomDialogComponent } from './components/share-room-dialog/share-room-dialog.component';
 import { MatSelectModule } from "@angular/material/select";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
+import { DocumentModule } from "../document/document.module";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -38,28 +40,31 @@ import { MatNativeDateModule } from "@angular/material/core";
   exports: [
     RoomListComponent
   ],
-  imports: [
-    RouterLink,
-    SharedModule,
-    CommonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatListModule,
-    RoomRoutingModule,
-    MatButtonModule,
-    MatTooltipModule,
-    MatDialogModule,
-    StoreModule.forFeature('room', RoomReducer),
-    EffectsModule.forFeature([RoomEffects]),
-    MatCardModule,
-    MatInputModule,
-    MatRadioModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ]
+    imports: [
+        RouterLink,
+        SharedModule,
+        CommonModule,
+        MatDividerModule,
+        MatIconModule,
+        MatListModule,
+        RoomRoutingModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatDialogModule,
+        StoreModule.forFeature('room', RoomReducer),
+        EffectsModule.forFeature([RoomEffects]),
+        MatCardModule,
+        MatInputModule,
+        MatRadioModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatGridListModule,
+        MatNativeDateModule,
+        DocumentModule,
+        MatProgressSpinnerModule
+    ]
 })
 export class RoomModule {
 }

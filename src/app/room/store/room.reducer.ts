@@ -46,7 +46,7 @@ export const RoomReducer = createReducer(
   on(RoomActions.roomCreated, (state, action) => {
     return {
       ...state,
-      rooms: [...state.rooms, {...action.room, isOwner: true}],
+      rooms: [...state.rooms, {...action.room, isOwner: true, documentCount: 0}],
       count: state.count + 1,
       creating: false
     }

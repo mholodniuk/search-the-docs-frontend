@@ -1,0 +1,14 @@
+.document-card {
+  height: 100%;
+  width: 90%;
+}
+
+.card-grid {
+  align-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.loading {
+  text-align: center;
+}

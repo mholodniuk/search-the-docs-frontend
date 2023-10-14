@@ -11,6 +11,7 @@ import { RoomModule } from "./room/room.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
+import { IconModule } from "./icon/icon.module";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { environment } from "../environments/environment";
     AppRoutingModule,
     UserModule,
     SharedModule,
+    IconModule,
     RoomModule,
     AuthModule,
     RootModule,

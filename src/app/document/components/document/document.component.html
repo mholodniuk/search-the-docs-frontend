@@ -1,0 +1,16 @@
+<div [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive" class="document-card">
+  <mat-card style="height: 100%; border-radius: 10px">
+    <mat-card-content class="content">
+      <div class="document-header">
+        <span class="title" [matTooltip]="title">{{title}}</span>
+        <!-- todo: get document thumbnail -->
+        <button mat-icon-button class="more-button" (click)="test()">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+      <div class="content file-thumbnail">
+        <mat-icon style="transform: scale(3)" [svgIcon]="file"></mat-icon>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
