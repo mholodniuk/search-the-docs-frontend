@@ -10,6 +10,7 @@ import { MaterialModule } from "../ui/material.module";
 import { DocumentDetailsDialogComponent } from './components/document-details/document-details-dialog.component';
 import { DocumentTagsDialogComponent } from './components/document-tags/document-tags-dialog.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { UploadDocumentDialogComponent } from './components/upload-document/upload-document-dialog.component';
 
 
 
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from "@angular/forms";
   declarations: [
     DocumentComponent,
     DocumentDetailsDialogComponent,
-    DocumentTagsDialogComponent
+    DocumentTagsDialogComponent,
+    UploadDocumentDialogComponent
   ],
   exports: [
     DocumentComponent

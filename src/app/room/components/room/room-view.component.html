@@ -3,7 +3,11 @@
     <mat-grid-list [cols]="columns" rowHeight="4:6">
       <mat-grid-tile-header>
         <div class="header">
-          <span class="title">{{room.name}}</span>
+          <div style="display: inline-block;">
+            <span class="title">{{room.name}}</span>
+            <mat-icon matTooltip="This room is private" style="margin-bottom: -3px; margin-left: 4px" *ngIf="room.isPrivate">lock</mat-icon>
+            <mat-icon matTooltip="This room is public" style="margin-bottom: -3px; margin-left: 4px" *ngIf="!room.isPrivate">lock_open</mat-icon>
+          </div>
           <mat-divider/>
           <div class="filter-section" *ngIf="tagsNotEmpty | async">
             <span style="font-size: 1rem">Tags</span>

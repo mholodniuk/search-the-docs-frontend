@@ -9,9 +9,9 @@ import { RoomEffects } from "./store/room.effects";
 import { RouterLink } from "@angular/router";
 import { RoomViewComponent } from "./components/room/room-view.component";
 import { RoomRoutingModule } from "./room-routing.module";
-import { CreateRoomDialogComponent } from './components/create-room-dialog/create-room-dialog.component';
+import { CreateRoomDialogComponent } from './components/create-room/create-room-dialog.component';
 import { ReactiveFormsModule } from "@angular/forms";
-import { ShareRoomDialogComponent } from './components/share-room-dialog/share-room-dialog.component';
+import { ShareRoomDialogComponent } from './components/share-room/share-room-dialog.component';
 import { DocumentModule } from "../document/document.module";
 import { MaterialModule } from "../ui/material.module";
 

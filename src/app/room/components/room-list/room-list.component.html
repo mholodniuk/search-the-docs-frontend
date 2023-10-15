@@ -1,6 +1,6 @@
 <div mat-subheader style="font-size: 1.5rem">Rooms</div>
 <div class="action-sections">
-  <button mat-fab color="white" matTooltip="Upload document" (click)="test()"
+  <button mat-fab color="white" matTooltip="Upload document" (click)="openUploadDocumentDialog()"
           [disabled]="!(userLoggedIn$ | async)">
     <mat-icon>attachment</mat-icon>
   </button>
@@ -16,7 +16,8 @@
 <mat-divider/>
 <mat-list style="width: 100%">
   <mat-list-item [routerLink]="['/rooms', room.id]" (click)="selectRoom(room.id)" *ngFor="let room of rooms$ | async">
-    <mat-icon matListItemIcon *ngIf="room.isOwner">folder</mat-icon>
+    <mat-icon matListItemIcon *ngIf="(room.isOwner && room.isPrivate)">folder</mat-icon>
+    <mat-icon matListItemIcon *ngIf="(room.isOwner && !room.isPrivate)">folder_open</mat-icon>
     <mat-icon matListItemIcon *ngIf="!room.isOwner">folder_shared</mat-icon>
     <div matListItemTitle> {{room.name}} </div>
     <div *ngIf="extendDisplay" matListItemLine> {{room.createdAt | date}}, {{documentCount(room)}} </div>
