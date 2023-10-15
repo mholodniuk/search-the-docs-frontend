@@ -1,8 +1,8 @@
-import { Room } from "../model/room.model";
+import { Room, SelectedRoom } from "../model/room.model";
 
 export interface RoomState {
-  rooms: Room[]
-  selectedRoom?: Room
-  count: number
-  creating: boolean
+  rooms: Room[];
+  selectedRoom?: SelectedRoom;
+  count: number;
+  creating: boolean;
 }

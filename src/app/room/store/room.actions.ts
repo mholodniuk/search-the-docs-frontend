@@ -18,6 +18,16 @@ export const availableRoomsLoaded = createAction(
   props<{ rooms: Room[], count: number }>()
 );
 
+export const loadTags = createAction(
+  `${ROOM_ACTION_TAG} Load Available Tags`,
+  props<{ roomId: number }>()
+);
+
+export const tagsLoaded = createAction(
+  `${ROOM_ACTION_TAG} Available Tags Loaded`,
+  props<{ tags: string[] }>()
+);
+
 export const selectRoom = createAction(
   `${ROOM_ACTION_TAG} Select Room`,
   props<{ id: number }>()

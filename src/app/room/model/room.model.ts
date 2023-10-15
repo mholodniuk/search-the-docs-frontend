@@ -8,8 +8,17 @@ export interface Room {
   documentCount: number
 }
 
+export interface SelectedRoom extends Room {
+  tags: string[];
+}
+
 export interface RoomCollection {
   rooms: Room[]
+  count: number
+}
+
+export interface TagCollection {
+  tags: string[]
   count: number
 }
 

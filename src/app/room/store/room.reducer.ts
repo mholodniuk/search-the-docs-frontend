@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { RoomState } from "./room.state";
 import * as RoomActions from './room.actions';
+import { SelectedRoom } from "../model/room.model";
 
 
 const initialState: RoomState = {
@@ -32,7 +33,7 @@ export const RoomReducer = createReducer(
   on(RoomActions.selectRoom, (state, action) => {
     return {
       ...state,
-      selectedRoom: state.rooms.find((room) => room.id === action.id)
+      selectedRoom: state.rooms.find((room) => room.id === action.id) as SelectedRoom
     }
   }),
 
@@ -56,6 +57,16 @@ export const RoomReducer = createReducer(
     return {
       ...state,
       creating: false
+    }
+  }),
+
+  on(RoomActions.tagsLoaded, (state, action) => {
+    return {
+      ...state,
+      selectedRoom: {
+        ...state.selectedRoom,
+        tags: action.tags
+      } as SelectedRoom
     }
   })
 );

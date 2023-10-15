@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from "../../../environments/environment";
 import { HttpClient } from "@angular/common/http";
-import { CreateRoomRequest, Room, RoomCollection } from "../model/room.model";
+import { CreateRoomRequest, Room, RoomCollection, TagCollection } from "../model/room.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,10 @@ export class RoomApiService {
 
   getRoomsByUserId(userId: number) {
     return this.http.get<RoomCollection>(`${this.usersUrl}/${userId}/rooms`);
+  }
+
+  getTagsByRoomId(roomId: number) {
+    return this.http.get<TagCollection>(`${this.roomsUrl}/${roomId}/tags`);
   }
 
   createRoom(createRoomRequest: CreateRoomRequest) {

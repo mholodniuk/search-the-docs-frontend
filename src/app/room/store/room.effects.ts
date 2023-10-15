@@ -78,6 +78,24 @@ export class RoomEffects {
     )
   );
 
+  startLoadingTags$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.selectRoom),
+      map((action) => RoomActions.loadTags({roomId: action.id}))
+    )
+  );
+
+  loadTags$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.loadTags),
+      switchMap((action) => {
+        return this.roomService.getTagsByRoomId(action.roomId).pipe(
+          map((response) => RoomActions.tagsLoaded({tags: response.tags}))
+        )
+      })
+    )
+  );
+
 
   constructor(
     private actions$: Actions,
