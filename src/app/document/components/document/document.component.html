@@ -2,13 +2,13 @@
   <mat-card style="height: 100%; border-radius: 10px">
     <mat-card-content class="content">
       <div class="document-header">
-        <span class="title" [matTooltip]="title">{{title}}</span>
+        <span class="title" [matTooltip]="document.name">{{document.name}}</span>
         <!-- todo: get document thumbnail -->
         <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
+          <button mat-menu-item (click)="openDetails()">
             <mat-icon>info</mat-icon>
             <span style="font-size: 0.8rem">More info</span>
           </button>
@@ -27,7 +27,7 @@
         </mat-menu>
       </div>
       <div class="content file-thumbnail">
-        <mat-icon style="transform: scale(3)" [svgIcon]="file"></mat-icon>
+        <mat-icon style="transform: scale(3)" [svgIcon]="document.contentType"></mat-icon>
       </div>
     </mat-card-content>
   </mat-card>

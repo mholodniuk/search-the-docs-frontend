@@ -5,7 +5,7 @@
         <div class="header">
           <span class="title">{{room.name}}</span>
           <mat-divider/>
-          <div class="filter-section">
+          <div class="filter-section" *ngIf="tagsNotEmpty | async">
             <span style="font-size: 1rem">Tags</span>
             <mat-chip-listbox [multiple]="true">
               <mat-chip *ngFor="let tag of tags$ | async">{{tag}}</mat-chip>
@@ -14,7 +14,7 @@
         </div>
       </mat-grid-tile-header>
       <mat-grid-tile *ngFor="let item of documents$ | async">
-        <document class="document-card" [title]="item.name" [file]="item.contentType"/>
+        <document class="document-card" [document]="item"/>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

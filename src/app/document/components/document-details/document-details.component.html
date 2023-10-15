@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{document.name}}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="width: 100%">
+    <div class="details-container">
+      <div class="thumbnail">
+        <img mat-card-image
+             class="thumbnail-image"
+             [src]="image"
+             [alt]="'Failed to retrieve thumbnail of ' + document.name "/>
+      </div>
+      <div class="metadata">
+        <span class="display-field">Internal ID: {{document.id}}</span>
+        <span class="display-field">Content Type: {{document.contentType}}</span>
+        <span class="display-field">Tags: {{document.tags.join(", ")}}</span>
+        <span class="display-field">Uploaded At: {{document.uploadedAt | date:'medium'}}</span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

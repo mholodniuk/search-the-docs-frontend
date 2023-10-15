@@ -1,11 +1,12 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { select, Store } from "@ngrx/store";
 import { AppState } from "../../../store/app.state";
-import { Observable } from "rxjs";
+import { filter, map, Observable } from "rxjs";
 import { Room } from "../../model/room.model";
 import { roomTagsSelector, selectedRoomSelector } from "../../store/room.selector";
 import { Document } from "../../../document/model/document.model";
 import { documentsLoadingSelector, documentsSelector } from "../../../document/store/document.selector";
+import { isDefined } from "../../../shared/utils/utils.functions";
 
 @Component({
   selector: 'selected-room',
@@ -38,5 +39,9 @@ export class RoomViewComponent implements OnInit {
 
   get columns(): number {
     return this.windowWidth > 900 ? 6 : 4;
+  }
+
+  get tagsNotEmpty() {
+    return this.tags$.pipe(filter(isDefined), map(tags => tags.length >= 1));
   }
 }

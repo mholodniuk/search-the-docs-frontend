@@ -1,4 +1,7 @@
 import { Component, HostListener, Input } from '@angular/core';
+import { MatDialog } from "@angular/material/dialog";
+import { DocumentDetailsComponent } from "../document-details/document-details.component";
+import { Document } from "../../model/document.model";
 
 @Component({
   selector: 'document',
@@ -8,8 +11,10 @@ import { Component, HostListener, Input } from '@angular/core';
 export class DocumentComponent {
   isActive = false;
 
-  @Input() title: string;
-  @Input() file: string;
+  @Input() document: Document;
+
+  constructor(private dialog: MatDialog) {
+  }
 
   @HostListener('mouseenter')
   onMouseEnter() {
@@ -19,5 +24,11 @@ export class DocumentComponent {
   @HostListener('mouseleave')
   onMouseLeaver() {
     this.isActive = false;
+  }
+
+  openDetails() {
+    this.dialog.open(DocumentDetailsComponent, {
+      data: this.document
+    });
   }
 }
