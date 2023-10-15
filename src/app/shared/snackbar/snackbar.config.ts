@@ -15,5 +15,5 @@ export const ERROR: MatSnackBarConfig = {
 export const SUCCESS: MatSnackBarConfig = {
   verticalPosition: 'bottom',
   horizontalPosition: 'right',
-  panelClass: 'sanckbar-success'
+  panelClass: 'snackbar-success'
 };

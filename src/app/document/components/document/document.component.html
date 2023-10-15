@@ -10,17 +10,17 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="openDetails()">
             <mat-icon>info</mat-icon>
-            <span style="font-size: 0.8rem">More info</span>
+            <span style="font-size: 0.8rem">More</span>
           </button>
-          <button mat-menu-item style="height: 6px !important;">
+          <button mat-menu-item>
             <mat-icon>cloud_download</mat-icon>
             <span style="font-size: 0.8rem">Download</span>
           </button>
-          <button mat-menu-item style="height: 6px !important;">
+          <button mat-menu-item (click)="openAssigningTags()">
             <mat-icon>style</mat-icon>
             <span style="font-size: 0.8rem">Tag</span>
           </button>
-          <button mat-menu-item style="height: 6px !important;">
+          <button mat-menu-item>
             <mat-icon>remove_circle</mat-icon>
             <span style="font-size: 0.8rem">Remove</span>
           </button>

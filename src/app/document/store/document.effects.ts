@@ -44,6 +44,17 @@ export class DocumentEffects {
     )
   );
 
+  updateDocumentTags$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentActions.updateDocumentTags),
+      switchMap(action => {
+        return this.documentService.updateDocumentTags(action.documentId, action.tags).pipe(
+          map((response) => DocumentActions.documentTagsUpdated({documentId: response.document, tags: response.tags})),
+        )
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,

@@ -7,10 +7,10 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 
 @Component({
   selector: 'document-details',
-  templateUrl: './document-details.component.html',
-  styleUrls: ['./document-details.component.css']
+  templateUrl: './document-details-dialog.component.html',
+  styleUrls: ['./document-details-dialog.component.css']
 })
-export class DocumentDetailsComponent implements OnInit, OnDestroy {
+export class DocumentDetailsDialogComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   image: SafeResourceUrl;
 

@@ -7,25 +7,29 @@ import { DocumentReducer } from "./store/document.reducer";
 import { DocumentEffects } from "./store/document.effects";
 import { SharedModule } from "../shared/shared.module";
 import { MaterialModule } from "../ui/material.module";
-import { DocumentDetailsComponent } from './components/document-details/document-details.component';
+import { DocumentDetailsDialogComponent } from './components/document-details/document-details-dialog.component';
+import { DocumentTagsDialogComponent } from './components/document-tags/document-tags-dialog.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 
 @NgModule({
   declarations: [
     DocumentComponent,
-    DocumentDetailsComponent
+    DocumentDetailsDialogComponent,
+    DocumentTagsDialogComponent
   ],
   exports: [
     DocumentComponent
   ],
-    imports: [
-        CommonModule,
-        MaterialModule,
-        SharedModule,
-        StoreModule.forFeature('document', DocumentReducer),
-        EffectsModule.forFeature([DocumentEffects]),
-        NgOptimizedImage,
-    ]
+  imports: [
+    CommonModule,
+    MaterialModule,
+    SharedModule,
+    StoreModule.forFeature('document', DocumentReducer),
+    EffectsModule.forFeature([DocumentEffects]),
+    NgOptimizedImage,
+    ReactiveFormsModule,
+  ]
 })
 export class DocumentModule { }

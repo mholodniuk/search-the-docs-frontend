@@ -37,13 +37,24 @@ export const DocumentReducer = createReducer(
     }
   }),
 
-  // todo: while trying to click on shared room got: org.springframework.dao.IncorrectResultSizeDataAccessException
   on(DocumentActions.availableDocumentsLoaded, (state, action) => {
     return {
       ...state,
       loading: false,
       error: undefined,
       documents: action.documents,
+    }
+  }),
+
+  on(DocumentActions.documentTagsUpdated, (state, action) => {
+    const updatedDocuments = state.documents.map(doc => doc.id === action.documentId ? {
+      ...doc,
+      tags: action.tags
+    } : doc);
+
+    return {
+      ...state,
+      documents: [...updatedDocuments]
     }
   }),
 );

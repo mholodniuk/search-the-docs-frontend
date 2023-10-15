@@ -1,7 +1,8 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
-import { DocumentDetailsComponent } from "../document-details/document-details.component";
+import { DocumentDetailsDialogComponent } from "../document-details/document-details-dialog.component";
 import { Document } from "../../model/document.model";
+import { DocumentTagsDialogComponent } from "../document-tags/document-tags-dialog.component";
 
 @Component({
   selector: 'document',
@@ -27,8 +28,16 @@ export class DocumentComponent {
   }
 
   openDetails() {
-    this.dialog.open(DocumentDetailsComponent, {
+    this.dialog.open(DocumentDetailsDialogComponent, {
       data: this.document
+    });
+  }
+
+  openAssigningTags() {
+    this.dialog.open(DocumentTagsDialogComponent, {
+      data: this.document,
+      width: "30%",
+      minHeight: "200px",
     });
   }
 }

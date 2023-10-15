@@ -12,3 +12,8 @@ export interface DocumentCollection {
   documents: Document[]
   count: number
 }
+
+export interface TagUpdateResponse {
+  tags: string[];
+  document: string
+}

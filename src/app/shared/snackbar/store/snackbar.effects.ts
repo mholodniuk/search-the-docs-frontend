@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, tap, delay } from 'rxjs/operators';
-
+import * as DocumentActions from '../../../document/store/document.actions';
 import * as SnackbarActions from './snackbar.actions';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SUCCESS } from "../snackbar.config";
 
 @Injectable()
 export class SnackbarEffects {
@@ -26,6 +27,20 @@ export class SnackbarEffects {
       }),
       delay(environment.snackBarDelayTime),
       map(() => SnackbarActions.closeSnackbar())
+    )
+  );
+
+  showUpdatedTags$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentActions.documentTagsUpdated),
+      map((action) => {
+        const config = {
+          message: `updated tags to [${action.tags}]`,
+          action: 'Close',
+          config: SUCCESS
+        };
+        return SnackbarActions.openSnackbar({config: config});
+      })
     )
   );
 

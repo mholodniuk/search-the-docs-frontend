@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { DocumentCollection } from "../model/document.model";
+import { DocumentCollection, TagUpdateResponse } from "../model/document.model";
 import { environment } from "../../../environments/environment";
 import { Observable } from "rxjs";
 
@@ -21,5 +21,9 @@ export class DocumentApiService {
 
   getDocumentThumbnail(id: string): Observable<Blob> {
     return this.http.get(`${this.filesUrl}/${id}/thumbnail`, {responseType: 'blob'});
+  }
+
+  updateDocumentTags(id: string, tags: string[]) {
+    return this.http.patch<TagUpdateResponse>(`${this.documentsUrl}/${id}`, {tags: tags});
   }
 }
