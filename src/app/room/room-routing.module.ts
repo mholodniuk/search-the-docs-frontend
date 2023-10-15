@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RoomComponent } from "./components/room/room.component";
+import { RoomViewComponent } from "./components/room/room-view.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: RoomComponent,
+    component: RoomViewComponent,
     children: [
       {
         path: ':id',
-        component: RoomComponent,
+        component: RoomViewComponent,
       }
     ],
   },

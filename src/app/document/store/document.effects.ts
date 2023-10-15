@@ -29,9 +29,7 @@ export class DocumentEffects {
 
   loadDocuments$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        DocumentActions.loadAvailableDocuments
-      ),
+      ofType(DocumentActions.loadAvailableDocuments),
       withLatestFrom(this.store.pipe(
         select(selectedRoomSelector),
         filter(isDefined),

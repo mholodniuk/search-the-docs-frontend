@@ -7,7 +7,7 @@ import { RoomReducer } from "./store/room.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { RoomEffects } from "./store/room.effects";
 import { RouterLink } from "@angular/router";
-import { RoomComponent } from "./components/room/room.component";
+import { RoomViewComponent } from "./components/room/room-view.component";
 import { RoomRoutingModule } from "./room-routing.module";
 import { CreateRoomDialogComponent } from './components/create-room-dialog/create-room-dialog.component';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -19,7 +19,7 @@ import { MaterialModule } from "../ui/material.module";
 @NgModule({
   declarations: [
     RoomListComponent,
-    RoomComponent,
+    RoomViewComponent,
     CreateRoomDialogComponent,
     ShareRoomDialogComponent
   ],

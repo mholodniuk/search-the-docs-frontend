@@ -14,3 +14,7 @@ export const publicRoomsSelector = createSelector(selectRoomState, (state) => {
 export const selectedRoomSelector = createSelector(selectRoomState, (state) => {
   return state.selectedRoom;
 });
+
+export const roomTagsSelector = createSelector(selectRoomState, (state) => {
+  return state.selectedRoom?.tags!!;
+});

@@ -20,6 +20,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatChipsModule } from "@angular/material/chips";
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatToolbarModule,
     MatBadgeModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatChipsModule
   ]
 })
 export class MaterialModule {
