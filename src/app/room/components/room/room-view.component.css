@@ -29,3 +29,15 @@
   align-items: center;
   gap: 10px;
 }
+
+.empty-container {
+  top: 4rem;
+  gap: 50px;
+  text-align: center;
+  height: 120px;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

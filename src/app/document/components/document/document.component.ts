@@ -36,7 +36,7 @@ export class DocumentComponent {
   openAssigningTags() {
     this.dialog.open(DocumentTagsDialogComponent, {
       data: this.document,
-      width: "30%",
+      width: "35%",
       minHeight: "200px",
     });
   }

@@ -15,6 +15,7 @@ export class IconModule {
   constructor(public matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     this.matIconRegistry.addSvgIcon("application/pdf", this.setPath("assets/icons/icons8-pdf-100.svg"));
     this.matIconRegistry.addSvgIcon("application/vnd.openxmlformats-officedocument.wordprocessingml.document", this.setPath("assets/icons/icons8-docx-80.svg"));
+    this.matIconRegistry.addSvgIcon("magnifying-glass", this.setPath("assets/icons/magnifying-glass.svg"));
   }
 
   private setPath(url: string): SafeResourceUrl {

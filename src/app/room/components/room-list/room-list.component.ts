@@ -9,8 +9,9 @@ import { userLoggedInSelector } from "../../../auth/store/user.selector";
 import { MatDialog } from "@angular/material/dialog";
 import { CreateRoomDialogComponent } from "../create-room/create-room-dialog.component";
 import { ShareRoomDialogComponent } from "../share-room/share-room-dialog.component";
-import * as SnackbarActions from "../../../shared/snackbar/store/snackbar.actions";
-import { ERROR } from "../../../shared/snackbar/snackbar.config";
+import {
+  UploadDocumentDialogComponent
+} from "../../../document/components/upload-document/upload-document-dialog.component";
 
 
 @Component({
@@ -45,7 +46,7 @@ export class RoomListComponent implements OnInit {
   }
 
   openUploadDocumentDialog() {
-    
+    this.dialog.open(UploadDocumentDialogComponent);
   }
 
   openShareRoomDialog(): void {

@@ -5,8 +5,12 @@
         <div class="header">
           <div style="display: inline-block;">
             <span class="title">{{room.name}}</span>
-            <mat-icon matTooltip="This room is private" style="margin-bottom: -3px; margin-left: 4px" *ngIf="room.isPrivate">lock</mat-icon>
-            <mat-icon matTooltip="This room is public" style="margin-bottom: -3px; margin-left: 4px" *ngIf="!room.isPrivate">lock_open</mat-icon>
+            <mat-icon matTooltip="This room is private" style="margin-bottom: -3px; margin-left: 4px"
+                      *ngIf="room.isPrivate">lock
+            </mat-icon>
+            <mat-icon matTooltip="This room is public" style="margin-bottom: -3px; margin-left: 4px"
+                      *ngIf="!room.isPrivate">lock_open
+            </mat-icon>
           </div>
           <mat-divider/>
           <div class="filter-section" *ngIf="tagsNotEmpty | async">
@@ -17,12 +21,25 @@
           </div>
         </div>
       </mat-grid-tile-header>
-      <mat-grid-tile *ngFor="let item of documents$ | async">
-        <document class="document-card" [document]="item"/>
-      </mat-grid-tile>
+      <div *ngIf="(documents$ | async)?.length else empty">
+        <mat-grid-tile *ngFor="let item of documents$ | async">
+          <document class="document-card" [document]="item"/>
+        </mat-grid-tile>
+      </div>
     </mat-grid-list>
   </div>
 </div>
+
+<ng-template #empty>
+  <div class="empty-container">
+    <div>
+      <mat-icon svgIcon="magnifying-glass" style="transform: scale(3.5);"></mat-icon>
+    </div>
+    <div>
+      <span style="font-size: 1.5rem">No documents found in this room</span>
+    </div>
+  </div>
+</ng-template>
 
 <ng-template #spinner>
   <div>

@@ -38,7 +38,11 @@ export class RoomViewComponent implements OnInit {
   }
 
   get columns(): number {
-    return this.windowWidth > 900 ? 6 : 4;
+    if (this.windowWidth > 1100)
+      return 6;
+    if (this.windowWidth <= 1100 && this.windowWidth > 750)
+      return 4;
+    return 2;
   }
 
   get tagsNotEmpty() {
