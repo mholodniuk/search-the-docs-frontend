@@ -46,11 +46,18 @@ export class RoomListComponent implements OnInit {
   }
 
   openUploadDocumentDialog() {
-    this.dialog.open(UploadDocumentDialogComponent);
+    this.dialog.open(UploadDocumentDialogComponent, {
+      width: "20%",
+      minHeight: "4rem"
+    });
   }
 
   openShareRoomDialog(): void {
     this.dialog.open(ShareRoomDialogComponent);
+  }
+
+  openFullTextSearch(): void {
+    console.log("SEARCH");
   }
 
   documentCount(room: Room): string {

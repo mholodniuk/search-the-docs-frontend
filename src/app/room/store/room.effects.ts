@@ -11,6 +11,7 @@ import { isDefined } from "../../shared/utils/utils.functions";
 import { HttpErrorResponse } from "@angular/common/http";
 import { InvalidResourceUpdateException } from "../../shared/types/errors";
 import { AccessApiService } from "../service/access-api.service";
+import * as DocumentActions from "../../document/store/document.actions";
 
 @Injectable()
 export class RoomEffects {
@@ -93,6 +94,13 @@ export class RoomEffects {
           map((response) => RoomActions.tagsLoaded({tags: response.tags}))
         )
       })
+    )
+  );
+
+  documentUpload$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentActions.documentUploaded),
+      map((action) => RoomActions.incrementDocumentsInRoom({name: action.room}))
     )
   );
 

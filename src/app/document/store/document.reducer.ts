@@ -21,7 +21,7 @@ export const DocumentReducer = createReducer(
     }
   }),
 
-  on(DocumentActions.loadAvailableDocuments, (state, action) => {
+  on(DocumentActions.loadAvailableDocuments, (state) => {
     return {
       ...state,
       loading: true,
@@ -57,4 +57,11 @@ export const DocumentReducer = createReducer(
       documents: [...updatedDocuments]
     }
   }),
+
+  on(DocumentActions.documentRemoved, (state, action) => {
+    return {
+      ...state,
+      documents: [...state.documents.filter(document => document.id !== action.id)]
+    }
+  })
 );

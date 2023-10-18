@@ -61,3 +61,8 @@ export const grantAccessFailure = createAction(
   `${ROOM_ACTION_TAG} Grant Room Access Failed`,
   props<{ message: string }>()
 );
+
+export const incrementDocumentsInRoom = createAction(
+  `${ROOM_ACTION_TAG} Increment Documents in Room`,
+  props<{ name: string }>()
+);

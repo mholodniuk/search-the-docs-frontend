@@ -68,5 +68,17 @@ export const RoomReducer = createReducer(
         tags: action.tags
       } as SelectedRoom
     }
+  }),
+
+  on(RoomActions.incrementDocumentsInRoom, (state, action) => {
+    const updatedRooms = [...state.rooms.map(room => room.name === action.name ? {
+      ...room,
+      documentCount: room.documentCount + 1
+    } : room)];
+
+    return {
+      ...state,
+      rooms: updatedRooms,
+    }
   })
 );

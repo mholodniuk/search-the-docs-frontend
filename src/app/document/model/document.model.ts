@@ -17,3 +17,11 @@ export interface TagUpdateResponse {
   tags: string[];
   document: string
 }
+
+export interface DocumentUploadedResponse {
+  id: string;
+  filename: string;
+  owner: string;
+  room: string;
+  info: string;
+}

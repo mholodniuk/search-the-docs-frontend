@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { DocumentCollection, TagUpdateResponse } from "../model/document.model";
+import { DocumentCollection, DocumentUploadedResponse, TagUpdateResponse } from "../model/document.model";
 import { environment } from "../../../environments/environment";
 import { Observable } from "rxjs";
 
@@ -25,5 +25,13 @@ export class DocumentApiService {
 
   updateDocumentTags(id: string, tags: string[]) {
     return this.http.patch<TagUpdateResponse>(`${this.documentsUrl}/${id}`, {tags: tags});
+  }
+
+  uploadDocument(file: File, roomId: number, userId: number) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('roomId', roomId.toString());
+    formData.append('ownerId', userId.toString());
+    return this.http.post<DocumentUploadedResponse>(`${this.documentsUrl}`, formData);
   }
 }

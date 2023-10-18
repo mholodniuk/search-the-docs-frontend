@@ -1,0 +1,18 @@
+.file-input {
+  display: none;
+}
+
+.file-upload-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.filename {
+  align-items: center;
+  width: 200px;
+  overflow: hidden;
+  display: inline-flex;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -9,6 +9,7 @@ import { selectedRoomSelector } from "../../room/store/room.selector";
 import * as DocumentActions from "../store/document.actions";
 import * as RoomActions from "../../room/store/room.actions";
 import { HttpErrorResponse } from "@angular/common/http";
+import { userSelector } from "../../auth/store/user.selector";
 
 @Injectable()
 export class DocumentEffects {
@@ -52,6 +53,29 @@ export class DocumentEffects {
           map((response) => DocumentActions.documentTagsUpdated({documentId: response.document, tags: response.tags})),
         )
       })
+    )
+  );
+
+  uploadDocument$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentActions.uploadDocument),
+      withLatestFrom(this.store.pipe(
+        select(userSelector),
+        filter(isDefined),
+      )),
+      switchMap(([action, user]) => {
+        return this.documentService.uploadDocument(action.file, action.roomId, user.id).pipe(
+          map(response => DocumentActions.documentUploaded(response)),
+          catchError((error: HttpErrorResponse) => of(DocumentActions.documentFailedToUpload()))
+        )
+      })
+    )
+  );
+
+  deleteDocument$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentActions.removeDocument),
+      map((action) => DocumentActions.documentRemoved({id: action.id}))
     )
   );
 

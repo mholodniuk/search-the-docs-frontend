@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-header>
+  <mat-card-header style="margin-bottom: 1rem">
     <mat-card-title>
       {{document.name}}
     </mat-card-title>
@@ -14,8 +14,10 @@
       </div>
       <div class="metadata">
         <span class="display-field">Internal ID: {{document.id}}</span>
+        <ng-container *ngIf="document.tags.length >= 1">
+          <span class="display-field">Tags: {{document.tags.join(", ")}}</span>
+        </ng-container>
         <span class="display-field">Content Type: {{document.contentType}}</span>
-        <span class="display-field">Tags: {{document.tags.join(", ")}}</span>
         <span class="display-field">Uploaded At: {{document.uploadedAt | date:'medium'}}</span>
       </div>
     </div>

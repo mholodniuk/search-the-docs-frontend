@@ -20,13 +20,14 @@
             <mat-icon>style</mat-icon>
             <span style="font-size: 0.8rem">Tag</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="delete()">
             <mat-icon>remove_circle</mat-icon>
             <span style="font-size: 0.8rem">Remove</span>
           </button>
         </mat-menu>
       </div>
       <div class="content file-thumbnail">
+        <!-- scale icon according to window size-->
         <mat-icon style="transform: scale(3)" [svgIcon]="document.contentType"></mat-icon>
       </div>
     </mat-card-content>

@@ -12,6 +12,10 @@
           [disabled]="!(userLoggedIn$ | async)">
     <mat-icon>share</mat-icon>
   </button>
+  <button mat-fab color="white" matTooltip="Search for phrase" (click)="openFullTextSearch()"
+          [disabled]="!(userLoggedIn$ | async)">
+    <mat-icon svgIcon="magnifying-glass"/>
+  </button>
 </div>
 <mat-divider/>
 <mat-list style="width: 100%">

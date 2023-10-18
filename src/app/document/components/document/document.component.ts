@@ -3,6 +3,9 @@ import { MatDialog } from "@angular/material/dialog";
 import { DocumentDetailsDialogComponent } from "../document-details/document-details-dialog.component";
 import { Document } from "../../model/document.model";
 import { DocumentTagsDialogComponent } from "../document-tags/document-tags-dialog.component";
+import { Store } from "@ngrx/store";
+import { AppState } from "../../../store/app.state";
+import * as DocumentActions from "../../store/document.actions";
 
 @Component({
   selector: 'document',
@@ -14,7 +17,9 @@ export class DocumentComponent {
 
   @Input() document: Document;
 
-  constructor(private dialog: MatDialog) {
+  constructor(
+    private dialog: MatDialog,
+    private store: Store<AppState>) {
   }
 
   @HostListener('mouseenter')
@@ -39,5 +44,9 @@ export class DocumentComponent {
       width: "35%",
       minHeight: "200px",
     });
+  }
+
+  delete() {
+    this.store.dispatch(DocumentActions.removeDocument({id: this.document.id}));
   }
 }

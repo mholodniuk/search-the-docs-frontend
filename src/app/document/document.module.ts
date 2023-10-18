@@ -13,7 +13,6 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { UploadDocumentDialogComponent } from './components/upload-document/upload-document-dialog.component';
 
 
-
 @NgModule({
   declarations: [
     DocumentComponent,
@@ -34,4 +33,5 @@ import { UploadDocumentDialogComponent } from './components/upload-document/uplo
     ReactiveFormsModule,
   ]
 })
-export class DocumentModule { }
+export class DocumentModule {
+}
