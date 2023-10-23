@@ -34,4 +34,8 @@ export class DocumentApiService {
     formData.append('ownerId', userId.toString());
     return this.http.post<DocumentUploadedResponse>(`${this.documentsUrl}`, formData);
   }
+
+  deleteDocument(id: string) {
+    return this.http.delete(`${this.documentsUrl}/${id}`);
+  }
 }

@@ -6,6 +6,7 @@ import * as SnackbarActions from './snackbar.actions';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SUCCESS } from "../snackbar.config";
+import { documentRemoved } from "../../../document/store/document.actions";
 
 @Injectable()
 export class SnackbarEffects {
@@ -35,7 +36,21 @@ export class SnackbarEffects {
       ofType(DocumentActions.documentTagsUpdated),
       map((action) => {
         const config = {
-          message: `updated tags to [${action.tags}]`,
+          message: `Updated tags to [${action.tags}]`,
+          action: 'Close',
+          config: SUCCESS
+        };
+        return SnackbarActions.openSnackbar({config: config});
+      })
+    )
+  );
+
+  documentRemoved$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentActions.documentRemoved),
+      map((action) => {
+        const config = {
+          message: `Deleted document`,
           action: 'Close',
           config: SUCCESS
         };

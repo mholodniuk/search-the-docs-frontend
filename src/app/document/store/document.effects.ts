@@ -75,7 +75,11 @@ export class DocumentEffects {
   deleteDocument$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DocumentActions.removeDocument),
-      map((action) => DocumentActions.documentRemoved({id: action.id}))
+      switchMap((action) => {
+        return this.documentService.deleteDocument(action.id).pipe(
+          map(() => DocumentActions.documentRemoved({id: action.id}))
+        )
+      })
     )
   );
 

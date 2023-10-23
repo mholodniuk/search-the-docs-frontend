@@ -12,6 +12,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { InvalidResourceUpdateException } from "../../shared/types/errors";
 import { AccessApiService } from "../service/access-api.service";
 import * as DocumentActions from "../../document/store/document.actions";
+import { selectedRoomSelector } from "./room.selector";
 
 @Injectable()
 export class RoomEffects {
@@ -94,6 +95,18 @@ export class RoomEffects {
           map((response) => RoomActions.tagsLoaded({tags: response.tags}))
         )
       })
+    )
+  );
+
+  documentTagsUpdated = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentActions.documentTagsUpdated),
+      withLatestFrom(this.store.pipe(
+        select(selectedRoomSelector),
+        filter(isDefined),
+        map(room => room.id)
+      )),
+      map(([, roomId]) => RoomActions.loadTags({roomId: roomId}))
     )
   );
 
