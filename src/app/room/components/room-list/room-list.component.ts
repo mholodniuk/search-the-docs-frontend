@@ -12,6 +12,7 @@ import { ShareRoomDialogComponent } from "../share-room/share-room-dialog.compon
 import {
   UploadDocumentDialogComponent
 } from "../../../document/components/upload-document/upload-document-dialog.component";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -28,7 +29,8 @@ export class RoomListComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
   }
 
@@ -57,7 +59,7 @@ export class RoomListComponent implements OnInit {
   }
 
   openFullTextSearch(): void {
-    console.log("SEARCH");
+    void this.router.navigate(['/documents']);
   }
 
   documentCount(room: Room): string {

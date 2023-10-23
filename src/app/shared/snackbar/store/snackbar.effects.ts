@@ -48,9 +48,9 @@ export class SnackbarEffects {
   documentRemoved$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DocumentActions.documentRemoved),
-      map((action) => {
+      map(() => {
         const config = {
-          message: `Deleted document`,
+          message: `Document deleted`,
           action: 'Close',
           config: SUCCESS
         };
