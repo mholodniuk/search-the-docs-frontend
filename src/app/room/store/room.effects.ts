@@ -117,6 +117,13 @@ export class RoomEffects {
     )
   );
 
+  documentDelete$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentActions.documentRemoved),
+      map((action) => RoomActions.decrementDocumentsInRoom({name: action.id}))
+    )
+  );
+
 
   constructor(
     private actions$: Actions,

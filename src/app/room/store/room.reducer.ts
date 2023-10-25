@@ -80,5 +80,17 @@ export const RoomReducer = createReducer(
       ...state,
       rooms: updatedRooms,
     }
+  }),
+
+  on(RoomActions.decrementDocumentsInRoom, (state, action) => {
+    const updatedRooms = [...state.rooms.map(room => room.name === state.selectedRoom?.name ? {
+      ...room,
+      documentCount: room.documentCount - 1
+    } : room)];
+
+    return {
+      ...state,
+      rooms: updatedRooms,
+    }
   })
 );

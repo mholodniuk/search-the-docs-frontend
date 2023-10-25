@@ -17,7 +17,7 @@
     <mat-icon svgIcon="magnifying-glass"/>
   </button>
 </div>
-<mat-divider/>
+<mat-divider *ngIf="(rooms$ | async)?.length"/>
 <mat-list style="width: 100%">
   <mat-list-item [routerLink]="['/rooms', room.id]" (click)="selectRoom(room.id)" *ngFor="let room of rooms$ | async">
     <mat-icon matListItemIcon *ngIf="(room.isOwner && room.isPrivate)">folder</mat-icon>
