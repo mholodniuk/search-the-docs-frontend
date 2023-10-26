@@ -3,20 +3,34 @@
     <mat-grid-list [cols]="columns" rowHeight="4:6">
       <mat-grid-tile-header>
         <div class="header">
-<!--          TODO HERE:-->
-<!--          <p>add button in right top corner with options:</p>-->
-<!--          <ul>-->
-<!--            <li>people (see people who have access to this room)</li>-->
-<!--            <li>delete</li>-->
-<!--          </ul>-->
-          <div style="display: inline-block;">
+          <!--          TODO HERE:-->
+          <!--          <p>add button in right top corner with options:</p>-->
+          <!--          <ul>-->
+          <!--            <li>people (see people who have access to this room)</li>-->
+          <!--            <li>delete</li>-->
+          <!--          </ul>-->
+          <div class="room-title-toolbar">
             <span class="title">{{room.name}}</span>
-            <mat-icon matTooltip="This room is private" style="margin-bottom: -3px; margin-left: 4px"
+            <mat-icon matTooltip="This room is private" style="margin-top: -3px; margin-left: 4px"
                       *ngIf="room.isPrivate">lock
             </mat-icon>
-            <mat-icon matTooltip="This room is public" style="margin-bottom: -3px; margin-left: 4px"
+            <mat-icon matTooltip="This room is public" style="margin-top: -3px; margin-left: 4px"
                       *ngIf="!room.isPrivate">lock_open
             </mat-icon>
+            <button mat-flat-button class="room-action-button" [matMenuTriggerFor]="menu">More</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>supervisor_account</mat-icon>
+                <span style="font-size: 0.8rem">Check access</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>remove_circle</mat-icon>
+                <span style="font-size: 0.8rem">Remove</span>
+              </button>
+              <button mat-menu-item disableRipple>
+                <span style="font-size: 0.8rem">Last update: {{room.modifiedAt | date: 'medium'}}</span>
+              </button>
+            </mat-menu>
           </div>
           <mat-divider/>
           <div class="filter-section" *ngIf="tagsNotEmpty | async">

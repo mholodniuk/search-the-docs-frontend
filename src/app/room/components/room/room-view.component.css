@@ -19,7 +19,7 @@
 
 .title {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
 }
 
 .filter-section {
@@ -40,4 +40,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.room-title-toolbar {
+  display: flex;
+  margin-bottom: -5px;
+}
+
+.room-action-button {
+  margin-top: -3px;
+  margin-left: auto;
+  height: 24px;
 }

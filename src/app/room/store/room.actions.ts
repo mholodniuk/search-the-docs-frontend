@@ -68,6 +68,6 @@ export const incrementDocumentsInRoom = createAction(
 );
 
 export const decrementDocumentsInRoom = createAction(
-  `${ROOM_ACTION_TAG} Increment Documents in Room`,
+  `${ROOM_ACTION_TAG} Decrement Documents in Room`,
   props<{ name: string }>()
 );

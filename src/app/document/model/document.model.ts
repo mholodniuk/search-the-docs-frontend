@@ -25,3 +25,12 @@ export interface DocumentUploadedResponse {
   room: string;
   info: string;
 }
+
+export interface Hit {
+  documentName: string
+  documentId: string
+  room: string
+  page: number
+  hits: string[]
+  count: number
+}
