@@ -6,6 +6,7 @@ import * as SnackbarActions from './snackbar.actions';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SUCCESS } from "../snackbar.config";
+import * as RoomActions from "../../../room/store/room.actions";
 
 @Injectable()
 export class SnackbarEffects {
@@ -35,7 +36,7 @@ export class SnackbarEffects {
       ofType(DocumentActions.documentUploaded),
       map((action) => {
         const config = {
-          message: `Uploaded [${action.filename}]`,
+          message: `Uploaded ${action.filename}`,
           action: 'Close',
           config: SUCCESS
         };
@@ -49,7 +50,21 @@ export class SnackbarEffects {
       ofType(DocumentActions.documentTagsUpdated),
       map((action) => {
         const config = {
-          message: `Updated tags to [${action.tags}]`,
+          message: `Updated tags`,
+          action: 'Close',
+          config: SUCCESS
+        };
+        return SnackbarActions.openSnackbar({config: config});
+      })
+    )
+  );
+
+  roomAccessGranted$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.roomAccessGranted),
+      map((action) => {
+        const config = {
+          message: `Shared room`,
           action: 'Close',
           config: SUCCESS
         };

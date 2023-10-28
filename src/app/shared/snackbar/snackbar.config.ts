@@ -8,7 +8,7 @@ export const INFO: MatSnackBarConfig = {
 
 export const ERROR: MatSnackBarConfig = {
   verticalPosition: 'bottom',
-  horizontalPosition: 'right',
+  horizontalPosition: 'center',
   panelClass: 'snackbar-error'
 };
 
