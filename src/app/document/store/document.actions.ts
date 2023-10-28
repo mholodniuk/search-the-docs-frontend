@@ -25,12 +25,12 @@ export const clearAvailableDocuments = createAction(
 export const updateDocumentTags = createAction(
   `${DOCUMENT_ACTION_TAG} Update Document Tags`,
   props<{ documentId: string, tags: string[] }>()
-)
+);
 
 export const documentTagsUpdated = createAction(
   `${DOCUMENT_ACTION_TAG} Document Tags Updated`,
   props<{ documentId: string, tags: string[] }>()
-)
+);
 
 export const removeDocument = createAction(
   `${DOCUMENT_ACTION_TAG} Remove Document`,

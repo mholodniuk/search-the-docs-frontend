@@ -60,6 +60,13 @@ export const RoomReducer = createReducer(
     }
   }),
 
+  on(RoomActions.roomDataLoaded, (state, action) => {
+    return {
+      ...state,
+      selectedRoom: action.room
+    }
+  }),
+
   on(RoomActions.tagsLoaded, (state, action) => {
     return {
       ...state,

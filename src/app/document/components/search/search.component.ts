@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SearchApiService } from "../../service/search-api.service";
 
 @Component({
   selector: 'search',
@@ -6,4 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+  value = 'clear me';
+
+  constructor(private searchService: SearchApiService) {
+    this.searchService.fullTextSearch("Java", 16).subscribe();
+  }
 }

@@ -80,10 +80,21 @@ export class RoomEffects {
     )
   );
 
-  startLoadingTags$ = createEffect(() =>
+  startLoadRoomData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RoomActions.selectRoom),
-      map((action) => RoomActions.loadTags({roomId: action.id}))
+      map((action) => RoomActions.loadRoomData({roomId: action.id}))
+    )
+  );
+
+  loadRoomData$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.loadRoomData),
+      switchMap((action) => {
+        return this.roomService.getRoomDetails(action.roomId).pipe(
+          map((response) => RoomActions.roomDataLoaded({room: response}))
+        )
+      })
     )
   );
 

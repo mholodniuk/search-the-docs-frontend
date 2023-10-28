@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { Room } from "../model/room.model";
+import { Room, SelectedRoom } from "../model/room.model";
 import { ErrorMessage } from "../../shared/types/errors";
 import { GrantAccessRequest } from "../model/access.model";
 
@@ -70,4 +70,14 @@ export const incrementDocumentsInRoom = createAction(
 export const decrementDocumentsInRoom = createAction(
   `${ROOM_ACTION_TAG} Decrement Documents in Room`,
   props<{ name: string }>()
+);
+
+export const loadRoomData = createAction(
+  `${ROOM_ACTION_TAG} Load Room Data`,
+  props<{ roomId: number }>()
+);
+
+export const roomDataLoaded = createAction(
+  `${ROOM_ACTION_TAG} Room Data Loaded`,
+  props<{ room: SelectedRoom }>()
 );

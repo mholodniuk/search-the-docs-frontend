@@ -9,7 +9,7 @@ import { SharedModule } from "../shared/shared.module";
 import { MaterialModule } from "../ui/material.module";
 import { DocumentDetailsDialogComponent } from './components/document-details/document-details-dialog.component';
 import { DocumentTagsDialogComponent } from './components/document-tags/document-tags-dialog.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { UploadDocumentDialogComponent } from './components/upload-document/upload-document-dialog.component';
 import { SearchComponent } from './components/search/search.component';
 import { RouterLink } from "@angular/router";
@@ -37,6 +37,7 @@ import { DocumentRoutingModule } from "./document-routing.module";
     EffectsModule.forFeature([DocumentEffects]),
     NgOptimizedImage,
     ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class DocumentModule {

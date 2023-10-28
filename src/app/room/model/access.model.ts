@@ -18,3 +18,5 @@ export interface AccessKey {
   validTo?: string
   accessRight: AccessRight
 }
+
+export type AccessKeyDto = Omit<AccessKey, 'room'>

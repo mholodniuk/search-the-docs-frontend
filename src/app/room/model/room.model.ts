@@ -1,3 +1,6 @@
+import { User } from "../../user/user.model";
+import { AccessKeyDto } from "./access.model";
+
 export interface Room {
   id: number
   name: string
@@ -10,6 +13,8 @@ export interface Room {
 
 export interface SelectedRoom extends Room {
   tags: string[];
+  owner: User;
+  accessKeys: AccessKeyDto[];
 }
 
 export interface RoomCollection {
