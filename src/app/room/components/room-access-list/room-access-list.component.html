@@ -5,17 +5,29 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-list role="list">
-      <ng-container *ngFor="let access of room.accessKeys">
-        <mat-list-item role="listitem">
-          <span>
-            {{access.recipient}} - <b>{{access.accessRight}}</b>
-            <ng-container *ngIf="access.validTo">
-              (valid to: {{access.validTo | date: 'shortDate'}})
-            </ng-container>
-          </span>
-        </mat-list-item>
+    <table mat-table [dataSource]="room.accessKeys">
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef> User</th>
+        <td mat-cell *matCellDef="let accessKey"> {{accessKey.recipient}} </td>
       </ng-container>
-    </mat-list>
+
+      <ng-container matColumnDef="access">
+        <th mat-header-cell *matHeaderCellDef> Access</th>
+        <td mat-cell *matCellDef="let accessKey"> <mat-chip>{{accessKey.accessRight}}</mat-chip> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name</th>
+        <td mat-cell *matCellDef="let accessKey"> {{accessKey.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="validTo">
+        <th mat-header-cell *matHeaderCellDef> Expiration date</th>
+        <td mat-cell *matCellDef="let accessKey"> {{accessKey.validTo | date:'shortDate'}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    </table>
   </mat-card-content>
 </mat-card>

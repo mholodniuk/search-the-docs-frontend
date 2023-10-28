@@ -21,6 +21,7 @@ import { MatBadgeModule } from "@angular/material/badge";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatChipsModule } from "@angular/material/chips";
+import { MatTableModule } from "@angular/material/table";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MatChipsModule } from "@angular/material/chips";
     MatIconModule,
     MatListModule,
     MatDialogModule,
+    MatTableModule,
     MatInputModule,
     MatRadioModule,
     MatSelectModule,

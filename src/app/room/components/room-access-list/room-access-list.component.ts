@@ -13,6 +13,7 @@ import { isDefined } from "../../../shared/utils/utils.functions";
 })
 export class RoomAccessListDialogComponent implements OnInit {
   room$: Observable<SelectedRoom>;
+  columnsToDisplay = ['user', 'access', 'validTo', 'name'];
 
   constructor(private store: Store<AppState>) {
   }
