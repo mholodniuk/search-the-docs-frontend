@@ -1,0 +1,21 @@
+<mat-card *ngIf="room$ | async as room">
+  <mat-card-header>
+    <mat-card-title>
+      Users with access to <b>{{room.name}}</b>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <ng-container *ngFor="let access of room.accessKeys">
+        <mat-list-item role="listitem">
+          <span>
+            {{access.recipient}} - <b>{{access.accessRight}}</b>
+            <ng-container *ngIf="access.validTo">
+              (valid to: {{access.validTo | date: 'shortDate'}})
+            </ng-container>
+          </span>
+        </mat-list-item>
+      </ng-container>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

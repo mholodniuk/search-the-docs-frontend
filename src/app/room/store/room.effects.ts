@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
 import { RoomApiService } from "../service/room-api.service";
 import * as UserActions from '../../auth/store/user.actions';
 import { catchError, filter, map, of, switchMap, withLatestFrom } from "rxjs";
@@ -95,6 +95,20 @@ export class RoomEffects {
           map((response) => RoomActions.roomDataLoaded({room: response}))
         )
       })
+    )
+  );
+
+  refreshSelectedRoom = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.refreshSelectedRoom),
+      concatLatestFrom(() =>
+        this.store.pipe(
+          select(selectedRoomSelector),
+          filter(isDefined),
+          map(room => room.id)
+        )
+      ),
+      map(([, roomId]) => RoomActions.selectRoom({id: roomId}))
     )
   );
 

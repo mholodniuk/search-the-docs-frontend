@@ -19,7 +19,11 @@
             </mat-icon>
             <button mat-flat-button class="room-action-button" [matMenuTriggerFor]="menu">More</button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>
+              <button mat-menu-item (click)="refresh()">
+                <mat-icon>refresh</mat-icon>
+                <span style="font-size: 0.8rem">Refresh</span>
+              </button>
+              <button mat-menu-item (click)="openCheckAccess()">
                 <mat-icon>supervisor_account</mat-icon>
                 <span style="font-size: 0.8rem">Check access</span>
               </button>

@@ -77,6 +77,10 @@ export const loadRoomData = createAction(
   props<{ roomId: number }>()
 );
 
+export const refreshSelectedRoom = createAction(
+  `${ROOM_ACTION_TAG} Refresh Room Data`
+);
+
 export const roomDataLoaded = createAction(
   `${ROOM_ACTION_TAG} Room Data Loaded`,
   props<{ room: SelectedRoom }>()

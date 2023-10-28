@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { ShareRoomDialogComponent } from './components/share-room/share-room-dialog.component';
 import { DocumentModule } from "../document/document.module";
 import { MaterialModule } from "../ui/material.module";
+import { RoomAccessListDialogComponent } from './components/room-access-list/room-access-list.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MaterialModule } from "../ui/material.module";
     RoomListComponent,
     RoomViewComponent,
     CreateRoomDialogComponent,
-    ShareRoomDialogComponent
+    ShareRoomDialogComponent,
+    RoomAccessListDialogComponent
   ],
   exports: [
     RoomListComponent

@@ -7,6 +7,9 @@ import { roomTagsSelector, selectedRoomSelector } from "../../store/room.selecto
 import { Document } from "../../../document/model/document.model";
 import { documentsLoadingSelector, documentsSelector } from "../../../document/store/document.selector";
 import { isDefined } from "../../../shared/utils/utils.functions";
+import { RoomAccessListDialogComponent } from "../room-access-list/room-access-list.component";
+import { MatDialog } from "@angular/material/dialog";
+import * as RoomActions from "../../store/room.actions";
 
 @Component({
   selector: 'selected-room',
@@ -21,7 +24,9 @@ export class RoomViewComponent implements OnInit {
 
   private windowWidth: number;
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private dialog: MatDialog,
+    private store: Store<AppState>) {
   }
 
   ngOnInit() {
@@ -47,5 +52,13 @@ export class RoomViewComponent implements OnInit {
 
   get tagsNotEmpty() {
     return this.tags$.pipe(filter(isDefined), map(tags => tags.length >= 1));
+  }
+
+  openCheckAccess() {
+    this.dialog.open(RoomAccessListDialogComponent);
+  }
+
+  refresh() {
+    this.store.dispatch(RoomActions.refreshSelectedRoom());
   }
 }

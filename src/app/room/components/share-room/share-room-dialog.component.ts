@@ -44,6 +44,7 @@ export class ShareRoomDialogComponent {
     if (date === null) {
       date = new Date();
     }
-    this.form.controls.validTo.setValue(`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`);
+    const day =  date.getDate() > 9 ? `${date.getDate()}` : `0${date.getDate()}`;
+    this.form.controls.validTo.setValue(`${day}-${date.getMonth() + 1}-${date.getFullYear()}`);
   }
 }
