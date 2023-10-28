@@ -12,10 +12,10 @@
             <mat-icon>info</mat-icon>
             <span style="font-size: 0.8rem">More</span>
           </button>
-          <button mat-menu-item>
+          <a mat-menu-item [href]="fileLocation" [download]="document.name" target="_blank">
             <mat-icon>cloud_download</mat-icon>
             <span style="font-size: 0.8rem">Download</span>
-          </button>
+          </a>
           <button mat-menu-item (click)="openAssigningTags()">
             <mat-icon>style</mat-icon>
             <span style="font-size: 0.8rem">Tag</span>

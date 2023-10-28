@@ -6,6 +6,7 @@ import { DocumentTagsDialogComponent } from "../document-tags/document-tags-dial
 import { Store } from "@ngrx/store";
 import { AppState } from "../../../store/app.state";
 import * as DocumentActions from "../../store/document.actions";
+import { DownloadService } from "../../service/download.service";
 
 @Component({
   selector: 'document',
@@ -19,6 +20,7 @@ export class DocumentComponent {
 
   constructor(
     private dialog: MatDialog,
+    private downloadService: DownloadService,
     private store: Store<AppState>) {
   }
 
@@ -36,6 +38,10 @@ export class DocumentComponent {
     this.dialog.open(DocumentDetailsDialogComponent, {
       data: this.document
     });
+  }
+
+  get fileLocation() {
+    return this.downloadService.getFileLocation(this.document);
   }
 
   openAssigningTags() {

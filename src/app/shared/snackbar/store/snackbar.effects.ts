@@ -31,6 +31,20 @@ export class SnackbarEffects {
     )
   );
 
+  documentUploaded$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentActions.documentUploaded),
+      map((action) => {
+        const config = {
+          message: `Uploaded [${action.filename}]`,
+          action: 'Close',
+          config: SUCCESS
+        };
+        return SnackbarActions.openSnackbar({config: config});
+      })
+    )
+  );
+
   showUpdatedTags$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DocumentActions.documentTagsUpdated),
