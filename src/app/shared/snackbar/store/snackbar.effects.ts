@@ -6,7 +6,6 @@ import * as SnackbarActions from './snackbar.actions';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SUCCESS } from "../snackbar.config";
-import { documentRemoved } from "../../../document/store/document.actions";
 
 @Injectable()
 export class SnackbarEffects {

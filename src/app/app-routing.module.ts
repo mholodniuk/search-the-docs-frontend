@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'auth', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)},
   {path: 'rooms', loadChildren: () => import('./room/room.module').then((m) => m.RoomModule)},
-  {path: 'documents', loadChildren: () => import('./document/document.module').then((m) => m.DocumentModule)},
+  {path: 'search', loadChildren: () => import('./search/search.module').then((m) => m.SearchModule)},
   {path: '**', component: NotFoundComponent},
 ];
 

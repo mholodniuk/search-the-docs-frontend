@@ -11,9 +11,7 @@ import { DocumentDetailsDialogComponent } from './components/document-details/do
 import { DocumentTagsDialogComponent } from './components/document-tags/document-tags-dialog.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { UploadDocumentDialogComponent } from './components/upload-document/upload-document-dialog.component';
-import { SearchComponent } from './components/search/search.component';
 import { RouterLink } from "@angular/router";
-import { DocumentRoutingModule } from "./document-routing.module";
 
 
 @NgModule({
@@ -21,8 +19,7 @@ import { DocumentRoutingModule } from "./document-routing.module";
     DocumentComponent,
     DocumentDetailsDialogComponent,
     DocumentTagsDialogComponent,
-    UploadDocumentDialogComponent,
-    SearchComponent
+    UploadDocumentDialogComponent
   ],
   exports: [
     DocumentComponent
@@ -30,7 +27,6 @@ import { DocumentRoutingModule } from "./document-routing.module";
   imports: [
     CommonModule,
     RouterLink,
-    DocumentRoutingModule,
     MaterialModule,
     SharedModule,
     StoreModule.forFeature('document', DocumentReducer),

@@ -59,7 +59,7 @@ export class RoomListComponent implements OnInit {
   }
 
   openFullTextSearch(): void {
-    void this.router.navigate(['/documents']);
+    void this.router.navigate(['/search']);
   }
 
   documentCount(room: Room): string {
