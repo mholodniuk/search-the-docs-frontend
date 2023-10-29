@@ -99,5 +99,16 @@ export const RoomReducer = createReducer(
       ...state,
       rooms: updatedRooms,
     }
+  }),
+
+  on(RoomActions.roomAccessRevoked, (state, action) => {
+    const updatedAccessKeys = [...state.selectedRoom!!.accessKeys.filter(a => a.recipientId !== action.userId)];
+    return {
+      ...state,
+      selectedRoom: {
+        ...state.selectedRoom,
+        accessKeys: updatedAccessKeys
+      } as SelectedRoom
+    }
   })
 );

@@ -80,6 +80,17 @@ export class RoomEffects {
     )
   );
 
+  revokeRoomAccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.revokeRoomAccess),
+      switchMap((action) => {
+        return this.accessService.revokeAccess(action).pipe(
+          map(_ => RoomActions.roomAccessRevoked({userId: action.userId}))
+        )
+      })
+    )
+  );
+
   startLoadRoomData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RoomActions.selectRoom),

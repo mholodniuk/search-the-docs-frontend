@@ -17,10 +17,9 @@ export class FailureInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((error) => {
-        if (error instanceof HttpErrorResponse) {
+        if (error instanceof HttpErrorResponse && error.status >= 500) {
           const config = {
             message: `Failed to execute request`,
-            action: 'Acknowledge',
             config: ERROR
           };
           this.store.dispatch(SnackbarActions.openSnackbar({config: config}));

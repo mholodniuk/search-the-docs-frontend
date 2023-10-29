@@ -10,11 +10,17 @@ export interface GrantAccessRequest {
   roomId: number
 }
 
+export interface RevokeAccessRequest {
+  userId: number;
+  roomId: number
+}
+
 export interface AccessKey {
   id: string
   name: string
   room: Room
   recipient: string
+  recipientId: number
   validTo?: string
   accessRight: AccessRight
 }

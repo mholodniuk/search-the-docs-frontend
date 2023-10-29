@@ -1,7 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { Room, SelectedRoom } from "../model/room.model";
 import { ErrorMessage } from "../../shared/types/errors";
-import { GrantAccessRequest } from "../model/access.model";
+import { GrantAccessRequest, RevokeAccessRequest } from "../model/access.model";
 
 const ROOM_ACTION_TAG = '[Room]';
 
@@ -84,4 +84,14 @@ export const refreshSelectedRoom = createAction(
 export const roomDataLoaded = createAction(
   `${ROOM_ACTION_TAG} Room Data Loaded`,
   props<{ room: SelectedRoom }>()
+);
+
+export const revokeRoomAccess = createAction(
+  `${ROOM_ACTION_TAG} Revoke Room Access`,
+  props<RevokeAccessRequest>()
+);
+
+export const roomAccessRevoked = createAction(
+  `${ROOM_ACTION_TAG} Room Access Revoked`,
+  props<{ userId: number }>()
 );
