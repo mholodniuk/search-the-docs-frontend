@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
-import { Hit } from "../../document/model/document.model";
+import { HitResponse } from "../../document/model/document.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,6 @@ export class SearchApiService {
   fullTextSearch(phrase: string, requester: number) {
     const params = new HttpParams({fromObject: {phrase: phrase, requester: requester}});
 
-    return this.http.get<Hit[]>(this.searchUrl, {params: params})
+    return this.http.get<HitResponse>(this.searchUrl, {params: params});
   }
 }

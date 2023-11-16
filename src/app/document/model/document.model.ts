@@ -27,10 +27,15 @@ export interface DocumentUploadedResponse {
 }
 
 export interface Hit {
-  documentName: string
-  documentId: string
-  room: string
-  page: number
-  hits: string[]
-  count: number
+  documentName: string;
+  documentId: string;
+  room: string;
+  user: string;
+  page: number;
+  hits: string[];
+  count: number;
+}
+
+export interface HitResponse {
+  hits: Hit[];
 }

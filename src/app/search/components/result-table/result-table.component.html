@@ -1,0 +1,51 @@
+<div class="example-container">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <ng-container *ngIf="resultsLength !== 0; else empty">
+    <div class="example-table-container">
+      <table mat-table [dataSource]="data" multiTemplateDataRows class="example-table">
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+          <th mat-header-cell *matHeaderCellDef> {{translations.get(column)}} </th>
+          <td mat-cell
+              *matCellDef="let element"
+              [matTooltip]="column === 'documentName' ? element[column] : null">{{element[column]}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <div class="example-element-description">
+                <mat-list role="list">
+                  <mat-list-item *ngFor="let hit of element.hits" role="listitem">
+                    <span [innerHTML]="hit"></span>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+            class="example-element-row"
+            [class.example-expanded-row]="expandedElement === element"
+            (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+      </table>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #empty>
+  <div class="empty-container">
+    <div>
+      <mat-icon style="transform: scale(5);">insert_drive_file</mat-icon>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-size: 1.7rem">No search results found</span>
+      <span style="font-size: 1rem">You must enter search phrase in order to see results</span>
+    </div>
+  </div>
+</ng-template>

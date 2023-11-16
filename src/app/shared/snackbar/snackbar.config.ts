@@ -1,7 +1,7 @@
 import { MatSnackBarConfig } from "@angular/material/snack-bar";
 
 export const INFO: MatSnackBarConfig = {
-  verticalPosition: 'top',
+  verticalPosition: 'bottom',
   horizontalPosition: 'right',
   panelClass: 'snackbar-info'
 };

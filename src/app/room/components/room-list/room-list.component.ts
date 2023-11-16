@@ -49,6 +49,7 @@ export class RoomListComponent implements OnInit {
 
   openUploadDocumentDialog() {
     this.dialog.open(UploadDocumentDialogComponent, {
+      minWidth: "300px",
       width: "20%",
       minHeight: "4rem"
     });

@@ -5,12 +5,17 @@ import { SearchRoutingModule } from "./search-routing.module";
 import { RouterLink } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "../ui/material.module";
-
+import { StoreModule } from "@ngrx/store";
+import { SearchReducer } from "./store/search.reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { SearchEffects } from "./store/search.effects";
+import { ResultTableComponent } from './components/result-table/result-table.component';
 
 
 @NgModule({
   declarations: [
-    SearchComponent
+    SearchComponent,
+    ResultTableComponent
   ],
   imports: [
     RouterLink,
@@ -18,6 +23,8 @@ import { MaterialModule } from "../ui/material.module";
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forFeature('search', SearchReducer),
+    EffectsModule.forFeature([SearchEffects]),
     SearchRoutingModule
   ]
 })
