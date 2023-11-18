@@ -3,7 +3,7 @@
     <mat-form-field [hideRequiredMarker]="true" class="example-full-width">
       <input matInput type="text" placeholder="Search..." formControlName="phrase" (keyup.enter)="search()">
       <button mat-icon-button matSuffix (click)="search()">
-        <mat-icon svgIcon="magnifying-glass"/>
+        <mat-icon style="scale: 1.3">search</mat-icon>
       </button>
       <button mat-icon-button matSuffix [matMenuTriggerFor]="menu">
         <mat-menu #menu="matMenu" style="overflow: hidden">
