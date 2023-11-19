@@ -12,8 +12,14 @@ export class SearchApiService {
   constructor(private http: HttpClient) {
   }
 
-  fullTextSearch(phrase: string, requester: number) {
-    const params = new HttpParams({fromObject: {phrase: phrase, requester: requester}});
+  fullTextSearch(phrase: string, requester: number, fragmentSize: number) {
+    const params = new HttpParams({
+      fromObject: {
+        "phrase": phrase,
+        "requester": requester,
+        "fragment-size": fragmentSize
+      }
+    });
 
     return this.http.get<HitResponse>(this.searchUrl, {params: params});
   }

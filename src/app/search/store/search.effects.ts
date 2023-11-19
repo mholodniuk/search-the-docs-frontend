@@ -28,7 +28,7 @@ export class SearchEffects {
         ]
       ),
       switchMap(([_, userId, filters]) => {
-        return this.searchService.fullTextSearch(filters.phrase, userId).pipe(
+        return this.searchService.fullTextSearch(filters.phrase, userId, filters.fragmentSize).pipe(
           map((response) => SearchActions.hitsLoaded({hits: response.hits}))
         )
       })

@@ -17,7 +17,7 @@ export class SearchComponent {
     phrase: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(100)])],
     room: '',
     user: '',
-    size: [50, Validators.compose([Validators.required, Validators.min(1), Validators.max(200)])],
+    size: [500, Validators.compose([Validators.required, Validators.min(1)])],
   });
 
   constructor(
@@ -29,6 +29,7 @@ export class SearchComponent {
     this.warnIfInvalid();
     const filters: FilterOptions = {
       phrase: this.form.controls.phrase.value!,
+      fragmentSize: this.form.controls.size.value!,
       room: this.form.controls.room.value!,
       user: this.form.controls.user.value!
     }
@@ -47,6 +48,7 @@ export class SearchComponent {
 
   clear() {
     this.form.reset();
-    this.store.dispatch(SearchActions.clearHits())
+    this.form.controls.size.setValue(500);
+    this.store.dispatch(SearchActions.clearHits());
   }
 }

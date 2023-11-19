@@ -1,7 +1,11 @@
 <div class="search-container">
   <form class="example-form" [formGroup]="form">
     <mat-form-field [hideRequiredMarker]="true" class="example-full-width">
-      <input matInput type="text" placeholder="Search..." formControlName="phrase" (keyup.enter)="search()">
+      <input matInput
+             type="text"
+             placeholder="Search..."
+             formControlName="phrase"
+             (keyup.enter)="$event.preventDefault(); search()">
       <button mat-icon-button matSuffix (click)="search()">
         <mat-icon style="scale: 1.3">search</mat-icon>
       </button>

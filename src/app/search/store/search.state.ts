@@ -8,6 +8,7 @@ export interface SearchState {
 
 export interface FilterOptions {
   phrase: string;
+  fragmentSize: number;
   room?: string;
   user?: string;
 }

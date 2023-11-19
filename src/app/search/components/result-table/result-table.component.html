@@ -1,9 +1,6 @@
-<div class="example-container">
-  <div class="example-loading-shade" *ngIf="isLoadingResults">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-  </div>
+<div class="results-container">
   <ng-container *ngIf="resultsLength !== 0; else empty">
-    <div class="example-table-container">
+    <div class="results-table-container">
       <table mat-table [dataSource]="data" multiTemplateDataRows class="example-table">
         <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
           <th mat-header-cell *matHeaderCellDef> {{translations.get(column)}} </th>
@@ -14,11 +11,11 @@
 
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-            <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-              <div class="example-element-description">
+            <div class="result-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <div class="expanded-element-description">
                 <mat-list role="list">
-                  <mat-list-item *ngFor="let hit of element.hits" role="listitem">
-                    <span [innerHTML]="hit"></span>
+                  <mat-list-item *ngFor="let hit of element.hits" class="mat-elevation-z8" #snippet role="listitem">
+                    <div class="fragment-text" [innerHTML]="hit"></div>
                   </mat-list-item>
                 </mat-list>
               </div>
@@ -27,18 +24,20 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
-            class="example-element-row"
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="result-element-row"
             [class.example-expanded-row]="expandedElement === element"
-            (click)="expandedElement = expandedElement === element ? null : element">
+            (click)="onElementSelected(element)">
         </tr>
-        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="result-detail-row"></tr>
       </table>
     </div>
   </ng-container>
 </div>
 
 <ng-template #empty>
+  <div class="results-loading-shade" *ngIf="isLoading$ | async">
+    <mat-spinner/>
+  </div>
   <div class="empty-container">
     <div>
       <mat-icon style="transform: scale(5);">insert_drive_file</mat-icon>

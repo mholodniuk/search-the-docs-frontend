@@ -4,7 +4,8 @@ import * as SearchActions from "./search.actions";
 
 const initialState: SearchState = {
   filters: {
-    phrase: ""
+    phrase: "",
+    fragmentSize: 500
   },
   hits: [],
   loading: false
@@ -19,6 +20,7 @@ export const SearchReducer = createReducer(
       loading: true,
       filters: {
         phrase: action.phrase,
+        fragmentSize: action.fragmentSize,
         room: action.room,
         user: action.user
       }
@@ -37,7 +39,13 @@ export const SearchReducer = createReducer(
     return {
       ...state,
       loading: false,
-      hits: []
+      hits: [],
+      filters: {
+        phrase: "",
+        fragmentSize: 500,
+        room: undefined,
+        user: undefined
+      }
     }
   }),
 );
