@@ -27,8 +27,6 @@ export class ResultTableComponent implements OnInit {
   data: Hit[];
   expandedElement: Hit;
 
-  @ViewChildren("snippet") snippets: QueryList<MatListItem>;
-
   translations = new Map([
     ["documentName", "Document"],
     ["room", "Room"],
@@ -50,12 +48,5 @@ export class ResultTableComponent implements OnInit {
 
   onElementSelected(element: any): void {
     this.expandedElement = this.expandedElement === element ? null : element;
-
-    this.snippets.forEach(matListElement => {
-      const nativeElement = matListElement._hostElement;
-      const textFragment = nativeElement.getElementsByClassName("fragment-text")[0];
-      const textHeight = textFragment.getBoundingClientRect().height;
-      nativeElement.setAttribute("style", `height: ${textHeight}px !important`);
-    });
   }
 }

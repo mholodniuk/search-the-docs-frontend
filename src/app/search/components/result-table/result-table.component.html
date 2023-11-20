@@ -14,7 +14,7 @@
             <div class="result-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
               <div class="expanded-element-description">
                 <mat-list role="list">
-                  <mat-list-item *ngFor="let hit of element.hits" class="mat-elevation-z8" #snippet role="listitem">
+                  <mat-list-item *ngFor="let hit of element.hits" class="mat-elevation-z8" role="listitem">
                     <div class="fragment-text" [innerHTML]="hit"></div>
                   </mat-list-item>
                 </mat-list>

@@ -93,16 +93,15 @@ tr.result-element-row:not(.example-expanded-row):active {
 }
 
 .fragment-text {
-  display: block;
+  display: table-row;
   overflow: auto;
   word-wrap: break-word;
   white-space: normal;
 }
 
 mat-list-item {
+  display: table;
   margin: 1rem 0 1rem;
   border-radius: 4px;
-  min-height: fit-content;
-  height: 100px;
   overflow: hidden;
 }
