@@ -5,7 +5,7 @@ import { NotFoundComponent } from "./shared/notfound/not-found.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)},
   {path: 'auth', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)},
   {path: 'rooms', loadChildren: () => import('./room/room.module').then((m) => m.RoomModule)},
   {path: 'search', loadChildren: () => import('./search/search.module').then((m) => m.SearchModule)},
